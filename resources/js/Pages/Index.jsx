@@ -6,7 +6,7 @@ export default function Index() {
     <>
       <Head title="Home | FileBag" />
 
-      <h1>Welcome to FileBag</h1>
+      <h1 className="">Welcome to FileBag</h1>
     </>
   );
 }

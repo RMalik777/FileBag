@@ -8,6 +8,7 @@ createInertiaApp({
     return pages[`./Pages/${name}.jsx`];
   },
   setup({ el, App, props }) {
+    el.removeAttribute("data-page");
     createRoot(el).render(<App {...props} />);
   },
 });
