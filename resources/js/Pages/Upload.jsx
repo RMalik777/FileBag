@@ -2,14 +2,14 @@ import React, { useState } from "react";
 import { Head } from "@inertiajs/inertia-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-import useNavigate from "react-router-dom";
+import {useNavigate} from "react-router-dom";
 
 export default function Upload() {
-    const navigate = useNavigate();
+    // const navigate = useNavigate();
 
-    const handleCancelClick = () => {
-      navigate("/");
-    };
+    // const handleCancelClick = () => {
+    //   navigate("/");
+    // };
 
     const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -109,7 +109,7 @@ export default function Upload() {
         </main>
 
         <footer className="upload-footer">
-          <button className="cancel-button" onClick={handleCancelClick}>
+          <button className="cancel-button">
             Cancel
           </button>
           <button className="upload-button" onClick={handleUploadClick}>
