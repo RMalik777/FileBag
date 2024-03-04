@@ -1,8 +1,8 @@
 import React, { useState } from "react";
 import { Head } from "@inertiajs/inertia-react";
-import { ToastContainer, toast } from "react-toastify";
-import "react-toastify/dist/ReactToastify.css";
-import {useNavigate} from "react-router-dom";
+// import { ToastContainer, toast } from "react-toastify";
+// import "react-toastify/dist/ReactToastify.css";
+// import {useNavigate} from "react-router-dom";
 import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
 
@@ -41,15 +41,14 @@ export default function Upload() {
         return;
       }
 
-      else if (file.type !== "application/pdf") {
+      if (file.type !== "application/pdf") {
         // alert("File type must be pdf!");
         sizeValidaton = false;
         setUploadedFile(file);
         console.log('set false2');
         return;
       }
-
-      else{
+      else if(file.type == "application/pdf"){
         sizeValidaton = true;
         setUploadedFile(file);
         console.log('set true');
