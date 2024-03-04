@@ -1,10 +1,8 @@
-
-
 import React, { useState } from 'react';
 import { Head } from "@inertiajs/inertia-react";
 import {ToastContainer, toast} from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css'
-import 'resources/css/app.css';
+import 'resources/css/index.css';
 import filebagxcimb from 'public/assets/filebagxcimbwhite.svg';
 import userphoto from 'public/assets/user_photo.svg';
 import filebagxcimbcolor from 'public/assets/filebagxcimb.svg';
