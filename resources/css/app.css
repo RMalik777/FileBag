@@ -5,106 +5,136 @@
 * {
   font-family: "Satoshi", sans-serif;
 }
-.App {
+.upload-container {
+  display: flex;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  background-color: #f5f5f5;
+}
+
+.upload-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  padding: 10px;
+  background-color: #790008;
+  margin-top: -60px;
+  margin-bottom: -20px;
 }
 
-.row {
-  position: relative;
+.upload-title {
+  font-size: 30px;
+  font-weight: bold;
+  color: #ffffff;
+  margin-left: 70px;
+  margin-top: 90px;
 }
 
-.header-background {
-  /* Styles for the background element */
-  background-image: url(./dashboard/headerbackground.png);
-  background-size: cover;
-  background-position: center;
-  width: 100%;
-  height: 100%;
-  position: absolute; /*Position the element absolutely*/
-  top: 0;
-  left: 0; /* Align to top-left corner */
-  z-index: -1; /* Set a lower z-index to push it behind the text */
-}
-
-.dashboard-title {
-  position:absolute; /* Position the text absolutely */
-  top: 100px; /* Adjust the top position as needed */
-  left: 200px; /* Adjust the left position as needed */
-  font-family: "Product Sans Bold", sans-serif; /* Set font family */
-  font-size: 32px; /* Set font size */
-  color: #fff; /* Adjust text color as needed */
-  margin: auto; /* Remove default margin */;
-}
-
-.App-header {
-  /* Styles for the header element, if needed */
-  overflow: hidden; /* Prevent horizontal scrolling */
-  display: flex; /* Use flexbox for layout */
-  flex-direction: column;
-}
-
-
-.logo-container {
-  display: flex; /* Use flexbox for logo positioning */
-  z-index: 1; /* Increase z-index to bring it above background */
-  align-items: center;
-  margin-left: 700px;
-  margin-top: 10px;
-}
-
-.logo {
-  /* Styles for individual logos */
-  width: auto; /* Allow logos to adjust to their natural size */
-  margin-right: 10px; /* Add spacing between logos */
+.upload-logo {
+  width: 400px;
+  height: auto;
+  margin-top: 50px;
 }
 
 .user-profile {
-  flex-direction: row; /*Stack elements vertically*/
-  align-items: right; /* Horizontally center elements within */
-  text-align: right; /* Right-align text content */
-  margin-top: 70px;
-  font-family: "Product Sans Bold", sans-serif; /* Set font family */
-  font-size: 12px; /* Set font size */
-  color: #fff; /* Adjust text color as needed */
-  margin-right: 200px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  flex-direction: column;
+  font-weight: bold;
 }
 
 .profile-pic {
-  width: 80px; /* Set a width for the profile picture */
-  height: 80px; /* Set a height for the profile picture */
-  border-radius: 50%; /* Make the profile picture circular */
-  /*
-  margin-top: 70px;
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
   margin-left: 10px;
-  */
 }
 
-.file-upload-section {
+.upload-main {
+  flex: 1;
   display: flex;
-  justify-content: space-around;
+  flex-direction: column;
   align-items: center;
-  margin-top: 30px; /* Adjust top margin as needed */
-  font-family: "Product Sans Bold", sans-serif; /* Match existing font */
-  color: #fff; /* Match existing text color */
-  flex-wrap: wrap;
+  padding: 20px;
 }
 
-.file-upload-title {
-  font-size: 20px; /* Adjust font size as needed */
+.upload-banner {
+  width: 30%;
+  height: auto;
+  margin-bottom: 20px;
 }
 
-.file-upload-info {
-  font-size: 14px; /* Adjust font size as needed */
-  margin-top: 10px; /* Adjust spacing as needed */
+.upload-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
 }
 
-.upload-button {
-  width: 150px; /* Adjust width as needed */
-  height: 40px; /* Adjust height as needed */
-  border-radius: 5px; /* Optional: Add rounded corners */
-  cursor: pointer; /* Indicate interactivity */
+.form-label {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 5px;
+  color: #333;
 }
 
+.form-input,
+.form-select {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  margin-bottom: 15px;
+}
 
+.drag-drop-zone {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+.drag-drop-text{
+  font-size: small;
+}
+
+.upload-footer {
+  display: flex;
+  justify-content:space-evenly;
+  align-items: center;
+  padding: 10px;
+  background-color: #ffffff;
+  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
+  margin-top: -50px;
+}
+
+.upload-button{
+  background-color: #790008;
+  color: white;
+  font-weight: bold;
+  font-size: 32;
+}
+
+.cancel-button{
+  background-color:white;
+  font-weight: bold;
+  font-size: 32;
+}
+
+.popup-container {
+  position: fixed; /* Ensures popup is positioned relative to the viewport */
+  top: 50%; /* Vertical centering: 50% of viewport height */
+  left: 50%; /* Horizontal centering: 50% of viewport width */
+  transform: translate(-50%, -50%); /* Adjust positioning based on element size */
+  background-color: white; /* Adjust background color as needed */
+  padding: 20px; /* Adjust padding as needed */
+  border: 1px solid #ddd; /* Optional border */
+  z-index: 999; /* Ensure popup is above other elements */
+}
+
+.close-button { /*still does nothing tbh*/
+  position:absolute; /* Absolute positioning within the popup */
+  top: 10px; /* Adjust top position from the top edge */
+  right: 10px; /* Adjust right position from the right edge */
+}
