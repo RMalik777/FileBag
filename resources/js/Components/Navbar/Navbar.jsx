@@ -40,7 +40,7 @@ export default function Navbar() {
         <img
           src="assets/user_photo.svg"
           alt="Profile"
-          className="profile-pic"
+          className="h-10"
         />
         <p>Hello, Calvin!</p>
         <p>Project Manager</p>

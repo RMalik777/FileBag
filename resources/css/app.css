@@ -16,123 +16,15 @@
   'GRAD' 200,
   'opsz' 48
 }
-
-.upload-container {
-  display: flex;
-  flex-direction: column;
-  width: 100vw;
-  height: 100vh;
-  background-color: #f5f5f5;
+.material-nofill {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
 }
 
-.upload-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  padding: 10px;
-  background-color: #790008;
-  margin-top: -60px;
-  margin-bottom: -20px;
-}
 
-.upload-title {
-  font-size: 30px;
-  font-weight: bold;
-  color: #ffffff;
-  margin-left: 70px;
-  margin-top: 90px;
-}
-
-.upload-logo {
-  width: 400px;
-  height: auto;
-  margin-top: 50px;
-}
-
-.user-profile {
-  display: flex;
-  align-items: center;
-  color: #ffffff;
-  flex-direction: column;
-  font-weight: bold;
-}
-
-.profile-pic {
-  width: 60px;
-  height: 60px;
-  border-radius: 50%;
-  margin-left: 10px;
-}
-
-.upload-main {
-  flex: 1;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  padding: 20px;
-}
-
-.upload-banner {
-  width: 30%;
-  height: auto;
-  margin-bottom: 20px;
-}
-
-.upload-form {
-  display: flex;
-  flex-direction: column;
-  width: 500px;
-}
-
-.form-label {
-  font-size: 16px;
-  font-weight: bold;
-  margin-bottom: 5px;
-  color: #333;
-}
-
-.form-input,
-.form-select {
-  padding: 10px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
-  margin-bottom: 15px;
-}
-
-.drag-drop-zone {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  margin-bottom: 30px;
-}
-
-.drag-drop-text{
-  font-size: small;
-}
-
-.upload-footer {
-  display: flex;
-  justify-content:space-evenly;
-  align-items: center;
-  padding: 10px;
-  background-color: #ffffff;
-  box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1);
-  margin-top: -50px;
-}
-
-.upload-button{
-  background-color: #790008;
-  color: white;
-  font-weight: bold;
-  font-size: 32;
-}
-
-.cancel-button{
-  background-color:white;
-  font-weight: bold;
-  font-size: 32;
-}
 
 .popup-container {
   position: fixed; /* Ensures popup is positioned relative to the viewport */
