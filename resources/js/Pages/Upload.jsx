@@ -34,16 +34,27 @@ export default function Upload() {
       setFileType(file.type);
 
       if (file.size > 3000000) {
-        alert("File size exceeds 3 MB limit!");
+        // alert("File size exceeds 3 MB limit!");
+        sizeValidaton = false;
+        setUploadedFile(file);
+        console.log('set false1');
         return;
       }
 
-      if (file.type !== "application/pdf") {
-        alert("File type must be pdf!");
+      else if (file.type !== "application/pdf") {
+        // alert("File type must be pdf!");
+        sizeValidaton = false;
+        setUploadedFile(file);
+        console.log('set false2');
         return;
       }
 
-      setUploadedFile(file);
+      else{
+        sizeValidaton = true;
+        setUploadedFile(file);
+        console.log('set true');
+        return;
+      }
     };
 
     const [showPopup, setShowPopup] = useState(false);
@@ -55,7 +66,9 @@ export default function Upload() {
       }
 
       if (uploadedFile) {
-        setShowPopup(true); //if there is an uploaded file, show popup after upload is clicked
+        // setShowPopup(true); //if there is an uploaded file, show popup after upload is clicked
+        setButtonPopup(true); 
+        setStatus(sizeValidaton);
       }
     };
 
@@ -68,8 +81,7 @@ export default function Upload() {
       <div className="upload-container">
         <Navbar />
         <main className="upload-main">
-          <button onClick={() => { setButtonPopup(true); setStatus(sizeValidaton); }}>Open Popup</button>
-          <Popup trigger={buttonPopup} setTrigger={setButtonPopup} status={status}/>
+          {/* <button onClick={() => { setButtonPopup(true); setStatus(sizeValidaton); }}>Open Popup</button> */}
           <h1>
             Input document title and category, then drag file to the provided
             area.
@@ -88,7 +100,8 @@ export default function Upload() {
             <div
               className="drag-drop-zone"
               onDragOver={handleDragOver}
-              onDrop={handleDrop}>
+              onDrop={handleDrop}
+              >
               <img
                 src="assets/drag&drop.svg"
                 alt="Drag & Drop Cover Banner"
@@ -106,10 +119,13 @@ export default function Upload() {
           <button className="cancel-button">
             Cancel
           </button>
-          <button className="upload-button" onClick={handleUploadClick}>
+          {/* BENERIN CODENYA SIZE VALNYA GAMA MASUK KONTOL */}
+          <button className="upload-button" onClick={() => { setButtonPopup(true); setStatus(sizeValidaton); }}>
             Upload
           </button>
         </footer>
+        
+        <Popup trigger={buttonPopup} setTrigger={setButtonPopup} status={status}/>
 
         {showPopup && (
           <div className="popup-container">
@@ -121,5 +137,6 @@ export default function Upload() {
         )}
       </div>
     );
+    
+  }
   
-}
