@@ -5,6 +5,15 @@
 * {
   font-family: "Satoshi", sans-serif;
 }
+
+.material-symbols-rounded {
+  font-variation-settings:
+  'FILL' 0,
+  'wght' 700,
+  'GRAD' 200,
+  'opsz' 48
+}
+
 .upload-container {
   display: flex;
   flex-direction: column;

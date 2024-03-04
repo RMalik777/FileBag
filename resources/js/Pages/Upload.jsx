@@ -4,6 +4,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {useNavigate} from "react-router-dom";
 
+import Navbar from "../Components/Navbar/Navbar";
+
 export default function Upload() {
     // const navigate = useNavigate();
 
@@ -57,24 +59,7 @@ export default function Upload() {
 
     return (
       <div className="upload-container">
-        <header className="upload-header">
-          <h4 className="upload-title">Upload Page</h4>
-          <img
-            src="assets/filebagxcimb.svg"
-            alt="FileBag x CIMB Niaga"
-            className="upload-logo"
-          />
-          <div className="user-profile">
-            <img
-              src="assets/user_photo.svg"
-              alt="Profile"
-              className="profile-pic"
-            />
-            <p>Hello, Calvin!</p>
-            <p>Project Manager</p>
-          </div>
-        </header>
-
+        <Navbar />
         <main className="upload-main">
           <h1>
             Input document title and category, then drag file to the provided
