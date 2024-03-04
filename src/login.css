@@ -1,0 +1,105 @@
+.container {
+    display: flex;
+    height: 100vh; 
+}
+
+.image-side {
+    flex: 45%;
+    background-size: cover;
+    background-position: center;
+}
+
+.CenterPicture {
+    text-align: center;
+    margin-top: 48%;
+    margin-right: 3%;
+
+}
+
+.CenterPicture img {
+    width: 300px;
+
+}
+
+.form-side {
+    flex: 55%; 
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    background-color: #790008;
+    align-items: center;
+}
+
+.form-group {
+    margin-bottom: 15px;
+
+}
+
+.form-side h2{
+    color: #ffffff;
+    text-align: center;
+}
+
+.form-side label{
+    color: #ffffff;
+}
+
+label {
+    display: block;
+    margin-bottom: 5px;
+}
+
+input[type="text"],
+input[type="password"] {
+    width: 100%;
+    margin-right: 170px;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    background-color: transparent;
+}
+
+.form-side form{
+    position: center;
+}
+
+button {
+    padding: 10px;
+    width:106%;
+    border: none;
+    border-radius: 18px;
+    background-color: #ffffff;
+    color: black;
+    cursor: pointer;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: #7b4749;
+}
+
+.form-group.remember-me {
+    display: flex;
+}
+
+.form-group.remember-me label {
+    margin-left: 5px;
+}
+
+input[type="checkbox"]{
+    /* margin-right: 500px;  */
+    /* padding: 10px; */
+    cursor: pointer;
+    background-color: transparent;
+    border-radius: 50px;
+}
+
+
+.form-side img{
+    width: 35%;
+    margin-bottom: 30px;
+
+}
+
