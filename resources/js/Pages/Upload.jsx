@@ -1,3 +1,5 @@
+//problems: abis upload popup yang muncul selalu yg "invalid credentials" meskipun udh pdf dan <=3mb.
+
 import React, { useState } from "react";
 import { Head } from "@inertiajs/inertia-react";
 // import { ToastContainer, toast } from "react-toastify";
