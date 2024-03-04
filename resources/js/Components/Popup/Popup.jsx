@@ -14,7 +14,7 @@ function Popup(props) {
             <>
               <img src='../../../assets/DeclinedSize.png' className='w-36'></img>
               <h3>Invalid Credentials!</h3>
-              <p>file size must be below 3Mb & in .pdf format</p>
+              <p>File size must be below 3Mb & in .pdf format</p>
             </>
             )}
         </div>
