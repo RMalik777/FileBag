@@ -1,8 +1,19 @@
-import React from "react";
+import React,{useState, useEffect} from "react";
 
 export default function Navbar() {
+  const [scrollY, setScrollY] = useState(0);
+  useEffect(() => {
+    const handleScroll = () => {
+      setScrollY(window.scrollY);
+    };
+    handleScroll();
+    window.addEventListener("scroll", handleScroll);
+    return () => {
+      window.removeEventListener("scroll", handleScroll);
+    };
+  }, [scrollY, setScrollY]);
   return (
-      <nav className="flex flex-row justify-between items-center px-5 bg-cimbred">
+      <nav className={"fixed w-full z-10 flex flex-row justify-between items-center px-5 bg-cimbred transition-all duration-200" + (scrollY > 100 ? " shadow-sm " : " bg-white/0 shadow-none ")}>
         <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
           <h1 className="text-white text-3xl lg:text-4xl font-bold py-5 px-5">
             Dashboard
