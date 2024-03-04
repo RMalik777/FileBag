@@ -15,5 +15,5 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', [PageController::class, 'index']);
-Route::get('upload', [PageController::class, 'upload']);
-Route::get('login', [PageController::class, 'login']);
+Route::get('/upload', [PageController::class, 'upload']);
+Route::get('/login', [PageController::class, 'login']);
