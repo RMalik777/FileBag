@@ -20,8 +20,8 @@ const Login = () => {
     <div className="flex h-screen">
       <div className="flex-[45%] bg-cover bg-center  transition-all duration-1000" style={{ backgroundImage: `url(${photos[selectedPhotoIndex]})` }}>
         <div className="flex flex-col items-center backdrop-brightness-50 justify-center h-full">
-          <img src={filexCIMB} alt="Company Logo" className="w-[380px] mb-8 justify-center" />
-          <h2 className='text-white text-[20px] justify-center'>Your Number 1 File Management System</h2>
+          <img src={filexCIMB} alt="Company Logo" className="w-[380px] mb-4 justify-center" />
+          <h2 className='text-white text-[18px] justify-center'>Your Number 1 File Management System</h2>
         </div>
       </div>
       <div className="flex-[55%] flex items-center justify-center bg-red-800">
