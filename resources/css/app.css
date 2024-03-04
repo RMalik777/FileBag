@@ -6,11 +6,12 @@
 
 * {
   font-family: "Satoshi", sans-serif;
+  margin:0;
 }
 
 .material-symbols-rounded {
   font-variation-settings:
-  'FILL' 0,
+  'FILL' 1,
   'wght' 700,
   'GRAD' 200,
   'opsz' 48
