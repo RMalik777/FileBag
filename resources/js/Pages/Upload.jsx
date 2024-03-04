@@ -3,7 +3,7 @@ import { Head } from "@inertiajs/inertia-react";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import {useNavigate} from "react-router-dom";
-
+import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
 
 export default function Upload() {
@@ -12,6 +12,13 @@ export default function Upload() {
     // const handleCancelClick = () => {
     //   navigate("/");
     // };
+
+
+    const [buttonPopup, setButtonPopup] = useState(false);
+  //change sizeValidation to swtich popup state
+    let sizeValidaton = false;
+    const [status, setStatus] = useState(false);
+
 
     const [uploadedFile, setUploadedFile] = useState(null);
 
@@ -61,6 +68,8 @@ export default function Upload() {
       <div className="upload-container">
         <Navbar />
         <main className="upload-main">
+          <button onClick={() => { setButtonPopup(true); setStatus(sizeValidaton); }}>Open Popup</button>
+          <Popup trigger={buttonPopup} setTrigger={setButtonPopup} status={status}/>
           <h1>
             Input document title and category, then drag file to the provided
             area.
