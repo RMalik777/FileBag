@@ -2,7 +2,7 @@ import React from "react";
 
 export default function Navbar() {
   return (
-      <nav className="flex flex-row justify-between items-center px-5 bg-cimbred">
+      <nav className="fixed w-full z-10 flex flex-row justify-between items-center px-5 bg-cimbred">
         <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
           <h1 className="text-white text-3xl lg:text-4xl font-bold py-5 px-5">
             Dashboard
