@@ -77,6 +77,7 @@ export default function Upload() {
 
   return (
     <>
+    <Head title="Upload | Filebag" />
       <Navbar />
       <div className="flex flex-col w-full h-screen bg-white pt-12">
         <main className="flex flex-auto flex-col items-center">
@@ -115,7 +116,7 @@ export default function Upload() {
               className="flex flex-col items-center justify-center mb-8 h-auto aspect-video max-w-4xl min-w-60 w-1/2 border border-4 border-zinc-400 rounded-lg"
               onDragOver={handleDragOver}
               onDrop={handleDrop}>
-              <span class="material-symbols-rounded material-nofill text-9xl text-zinc-300">
+              <span class="material-symbols-rounded text-9xl text-zinc-300">
                 cloud_upload
               </span>
               <p className="text-lg font-medium">Maximum size 3mb, PDF format only</p>
