@@ -13,7 +13,6 @@ return new class extends Migration
     {
         Schema::create('file_details', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('file_header_id')->constrained();
             $table->string('file_name', 255);
             $table->float('file_size');
             $table->string('file_path', 255);
