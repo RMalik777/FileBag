@@ -1,8 +1,34 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Head } from "@inertiajs/inertia-react";
 
 export default function Index() {
+
+  //data buat tabel
+  const data = [
+    { file: 'IT2024', category: 'IT', dateUpdated: '02 February 2024', uploadedBy: 'John Doe'},
+    { file: 'HR2024', category: 'HR', dateUpdated: '02 February 2024', uploadedBy: 'John Doe'},
+    { file: 'Management2024', category: 'Management', dateUpdated: '02 February 2024', uploadedBy: 'John Doe'},
+    { file: 'LnD2023', category: 'LnD', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
+    { file: 'IT2023', category: 'IT', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
+    { file: 'HR2023', category: 'HR', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
+    { file: 'Management2023', category: 'Management', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
+
+  const totalPages = Math.ceil(data.length / itemsPerPage);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+
   return (
     <>
       <Head title="Dashboard | Filebag" />
@@ -76,15 +102,15 @@ export default function Index() {
         <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white text-2xl border-collapse border-spacing-y-10 mt-4">
           <thead className="rounded-lg">
             <tr className="border-cimbred border-x-0 border-y-2 rounded-lg">
-              <th className="py-5">File</th>
-              <th className="py-5">Category</th>
-              <th className="py-5">Date Updated</th>
-              <th className="py-5">Upload By</th>
-              <th className="py-5">Action</th>
+              <th style={{ width: '20%' }} className="py-5">File</th>
+              <th style={{ width: '20%' }} className="py-5">Category</th>
+              <th style={{ width: '20%' }} className="py-5">Date Updated</th>
+              <th style={{ width: '20%' }} className="py-5">Uploaded By</th>
+              <th style={{ width: '20%' }} className="py-5">Action</th>
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            <tr className="border-cimbred border-x-0 border-y-2">
+            {/* <tr className="border-cimbred border-x-0 border-y-2">
               <th className="">
                 <a href="" className="text-blue-600 underline">
                   IT2024
@@ -155,9 +181,53 @@ export default function Index() {
                   add_circle
                 </span>
               </th>
-            </tr>
+            </tr> */}
+            {currentItems.map((item, index) =>(
+              <tr key={index}>
+                <td>{item.file}</td>
+                <td>{item.category}</td>
+                <td>{item.dateUpdated}</td>
+                <td>{item.uploadedBy}</td>
+                <td style={{ textAlign: 'center' }}>
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  {/* Replace with clock icon code */}
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                    schedule
+                  </span>
+                </span>
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  {/* Replace with plus icon code */}
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                    add_circle
+                  </span>
+                </span>
+              </td>
+              </tr>
+            ))}
           </tbody>
         </table>
+
+        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
+        {Array.from({ length: totalPages }, (_, pageNumber) => (
+          <button
+            key={pageNumber}
+            onClick={() => handlePageChange(pageNumber + 1)}
+            style={{
+              width: '30px',
+              height: '30px',
+              backgroundColor: pageNumber + 1 === currentPage ? 'darkred' : 'white',
+              color: pageNumber + 1 === currentPage ? 'white' : 'black',
+              borderRadius: '50%',
+              margin: '0.5rem',
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center',
+            }}
+          >
+            {pageNumber + 1}
+          </button>
+        ))}
+        </div>
       </div>
     </>
   );
