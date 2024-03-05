@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
+import { Link, usePage } from "@inertiajs/inertia-react";
 
 export default function Navbar() {
+  const { url, component } = usePage()
   const [scrollY, setScrollY] = useState(0);
   const [nav, setNav] = useState(false);
   const showNav = () => {
@@ -33,25 +35,25 @@ export default function Navbar() {
         <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
           <ul className="flex flex-row">
             <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
-              <a
+              <Link
                 href=""
-                className="hover:text-5 hover:underline duration-200 ease-out">
+                className={(url.startsWith('/') ? 'text-5' : '') + " hover:text-5 hover:underline duration-200 ease-out"}>
                 Home
-              </a>
+              </Link>
             </li>
             <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
-              <a
+              <Link
                 href=""
-                className="hover:text-5 hover:underline duration-200 ease-out">
+                className={(url.startsWith('/users') ? 'text-5' : '') + " hover:text-5 hover:underline duration-200 ease-out"}>
                 Upload
-              </a>
+              </Link>
             </li>
             <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
-              <a
+              <Link
                 href=""
-                className="hover:text-5 hover:underline duration-200 ease-out">
+                className={(url.startsWith('/users') ? 'text-5' : '')+ " hover:text-5 hover:underline duration-200 ease-out"}>
                 Logout
-              </a>
+              </Link>
             </li>
           </ul>
         </div>
