@@ -2,7 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, usePage } from "@inertiajs/inertia-react";
 
 export default function Navbar() {
-  const { url, component } = usePage()
+  const { url, component } = usePage();
   const [scrollY, setScrollY] = useState(0);
   const [nav, setNav] = useState(false);
   const showNav = () => {
@@ -17,6 +17,7 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
+      console.log(scrollY);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll);
@@ -27,31 +28,48 @@ export default function Navbar() {
   return (
     <header
       className={
-        "fixed w-full z-10 flex flex-row justify-between items-center px-5 bg-cimbred transition-all duration-200" +
-        (scrollY > 100 ? " shadow-sm " : " bg-white/0 shadow-none ")
+        "fixed w-full z-10 flex flex-row justify-between items-center px-5  transition-all duration-200 " +
+        (scrollY > 100 || url !== "/" ? "bg-cimbred" : "bg-white/0")
       }>
       <div className="max-lg:hidden w-full flex flex-row gap-2 items-center justify-start">
-        <img src="assets/logox.svg" alt="Filebag logo" className="w-1/4 max-xl:hidden pb-3" />
+        <img
+          src="assets/logox.svg"
+          alt="Filebag logo"
+          className="w-1/4 max-xl:hidden pb-3"
+        />
         <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
           <ul className="flex flex-row">
-            <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-2xl lg:text-2xl font-bold py-5 px-5">
               <Link
-                href=""
-                className={(url.startsWith('/') ? 'text-5' : '') + " hover:text-5 hover:underline duration-200 ease-out"}>
+                href="/"
+                className={
+                  (url === "/"
+                    ? scrollY > 100
+                      ? "text-white"
+                      : "text-white"
+                    : "") +
+                  " hover:text-1 hover:underline duration-200 ease-out"
+                }>
                 Home
               </Link>
             </li>
-            <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-2xl lg:text-2xl font-bold py-5 px-5">
               <Link
-                href=""
-                className={(url.startsWith('/users') ? 'text-5' : '') + " hover:text-5 hover:underline duration-200 ease-out"}>
+                href="/upload"
+                className={
+                  (url.startsWith("/upload") ? "text-white" : "") +
+                  " hover:text-1 hover:underline duration-200 ease-out"
+                }>
                 Upload
               </Link>
             </li>
-            <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-2xl lg:text-2xl font-bold py-5 px-5">
               <Link
-                href=""
-                className={(url.startsWith('/users') ? 'text-5' : '')+ " hover:text-5 hover:underline duration-200 ease-out"}>
+                href="/"
+                className={
+                  (url === "" ? "text-white" : "") +
+                  " hover:text-1 hover:underline duration-200 ease-out"
+                }>
                 Logout
               </Link>
             </li>
