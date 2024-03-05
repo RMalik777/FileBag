@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class Employee extends Model
 {
-    use HasFactory;
+    public function fileHeader(){
+        return $this->hasMany(FileHeader::class);
+    }
 }

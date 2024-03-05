@@ -7,5 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 
 class FileDetail extends Model
 {
-    use HasFactory;
+    public function fileHeader(){
+        return $this->belongsTo(FileHeader::class);
+    }
 }
