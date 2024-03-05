@@ -1,5 +1,3 @@
-//problems: abis upload popup yang muncul selalu yg "invalid credentials" meskipun udh pdf dan <=3mb.
-
 import React, { useState } from "react";
 import { Head } from "@inertiajs/inertia-react";
 // import { ToastContainer, toast } from "react-toastify";
@@ -123,7 +121,7 @@ export default function Upload() {
                 cloud_upload
               </span>
               <p className="text-lg font-medium">Maximum size 3mb, PDF format only</p>
-              {uploadedFile && <p>Uploaded file: {uploadedFile.name}</p>}
+              {uploadedFile && <p>Uploaded file: {uploadedFile.name} | Upload time: {new Date().toLocaleString()}</p>}
             </div>
           </div>
         </main>
