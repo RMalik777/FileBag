@@ -58,17 +58,19 @@ export default function Index() {
         </div>
         <div className="flex flex-row justify-between">
           <p>Choose the Following Category Below!</p>
-          <form className="relative pm">
-            <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <span class="material-symbols-rounded text-gray-200">search</span>
+          <form className="relative">
+            <div className="w-full">
+              <div className="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
+                <span className="material-symbols-rounded text-gray-200">search</span>
+              </div>
+              <input
+                type="search"
+                id="default-search"
+                className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-5 py-3 rounded-full bg-3 text-white placeholder-gray-200"
+                placeholder="Search"
+                required
+              />
             </div>
-            <input
-              type="search"
-              id="default-search"
-              className="block w-full p-2 ps-10 text-lg font-medium border border-gray-300 px-5 py-3 rounded-xl bg-3 text-white placeholder-gray-200"
-              placeholder="Search"
-              required
-            />
           </form>
         </div>
         <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white text-2xl border-collapse border-spacing-y-10 mt-4">
