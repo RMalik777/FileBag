@@ -28,25 +28,42 @@ export default function Navbar() {
         "fixed w-full z-10 flex flex-row justify-between items-center px-5 bg-cimbred transition-all duration-200" +
         (scrollY > 100 ? " shadow-sm " : " bg-white/0 shadow-none ")
       }>
-      <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
-        <h1 className="text-white text-3xl lg:text-4xl font-bold py-5 px-5">
-          Dashboard
-        </h1>
+      <div className="max-lg:hidden w-full flex flex-row gap-2 items-center justify-start">
+        <img src="assets/logox.svg" alt="Filebag logo" className="w-1/4 max-xl:hidden pb-3" />
+        <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
+          <ul className="flex flex-row">
+            <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
+              <a
+                href=""
+                className="hover:text-5 hover:underline duration-200 ease-out">
+                Home
+              </a>
+            </li>
+            <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
+              <a
+                href=""
+                className="hover:text-5 hover:underline duration-200 ease-out">
+                Upload
+              </a>
+            </li>
+            <li className="text-white text-2xl lg:text-2xl font-bold py-5 px-5">
+              <a
+                href=""
+                className="hover:text-5 hover:underline duration-200 ease-out">
+                Logout
+              </a>
+            </li>
+          </ul>
+        </div>
       </div>
-      <div className="max-lg:hidden">
-        <img src="assets/logox.svg" alt="" />
-      </div>
-      <div className="hidden max-lg:order-3 lg:flex flex-col font-bold text-white items-center">
-        <img
-          src="assets/user_photo.svg"
-          alt="Profile"
-          className="h-10"
-        />
-        <p>Hello, Calvin!</p>
-        <p>Project Manager</p>
+      <div className="hidden max-lg:order-3 lg:flex flex-col w-fit font-bold text-white items-center py-2">
+        <p className="">Calvin</p>
+        <p className="font-medium">Project&nbsp;Manager</p>
       </div>
       <div className="p-5 order-2 lg:hidden">
-        <span className="material-symbols-rounded text-white text-5xl cursor-pointer" onClick={showNav}>
+        <span
+          className="material-symbols-rounded text-white text-5xl cursor-pointer"
+          onClick={showNav}>
           menu
         </span>
       </div>
@@ -64,8 +81,12 @@ export default function Navbar() {
             alt="Close Button">
             close
           </span>
-          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-3xl text-white font-medium inline-block md:block duration-200 ease-linear max-md:hover:tracking-wider hover:underline ">Home</li>
-          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-3xl text-white font-medium inline-block md:block duration-200 ease-linear max-md:hover:tracking-wider hover:underline ">Logout</li>
+          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear max-md:hover:tracking-wider hover:underline ">
+            Home
+          </li>
+          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear max-md:hover:tracking-wider hover:underline ">
+            Logout
+          </li>
         </ul>
       </nav>
     </header>

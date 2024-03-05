@@ -5,7 +5,7 @@ import { Head } from "@inertiajs/inertia-react";
 export default function Index() {
   return (
     <>
-    <Head title="Dashboard | Filebag" />
+      <Head title="Dashboard | Filebag" />
       <Navbar />
       <div className="w-full bg-cover bg-fixed bg-[url(../../../public/assets/homecover.jpg)] h-auto">
         <div className="flex flex-col justify-between backdrop-brightness-50 h-full pt-60 ">
@@ -40,8 +40,8 @@ export default function Index() {
           </svg>
         </div>
       </div>
-      <div className="h-auto">
-        <div className="flex px-8">
+      <div className="h-auto w-full px-8 flex flex-col">
+        <div className="flex">
           <select
             id="category"
             name="category"
@@ -56,41 +56,102 @@ export default function Index() {
             <option value={4}>L&T</option>
           </select>
         </div>
-        <div className="flex flex-row justify-between px-8">
+        <div className="flex flex-row justify-between">
           <p>Choose the Following Category Below!</p>
           <form className="relative pm">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <span class="material-symbols-rounded text-white">search</span>
+              <span class="material-symbols-rounded text-gray-200">search</span>
             </div>
             <input
               type="search"
               id="default-search"
-              className="block w-full p-2 ps-10 text-sm text-gray-900 border border-gray-300 
-                rounded-xl bg-3 text-white placeholder-white"
+              className="block w-full p-2 ps-10 text-lg font-medium border border-gray-300 px-5 py-3 rounded-xl bg-3 text-white placeholder-gray-200"
               placeholder="Search"
               required
             />
           </form>
         </div>
-        <table className="table-auto w-full bg-cimbred text-white text-2xl">
-          <thead className="">
-            <tr>
-              <th>File</th>
-              <th>Category</th>
-              <th>Date Updated</th>
-              <th>Upload By</th>
-              <th>Action</th>
+        <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white text-2xl border-collapse border-spacing-y-10 mt-4">
+          <thead className="rounded-lg">
+            <tr className="border-cimbred border-x-0 border-y-2 rounded-lg">
+              <th className="py-5">File</th>
+              <th className="py-5">Category</th>
+              <th className="py-5">Date Updated</th>
+              <th className="py-5">Upload By</th>
+              <th className="py-5">Action</th>
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            <tr>
-              <th ><a href="" className="text-blue-600 underline">IT2024</a></th>
-              <th>IT</th>
-              <th>02 February 2024</th>
-              <th>Jeff</th>
-              <th>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">schedule</span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred" >add_circle</span>
+            <tr className="border-cimbred border-x-0 border-y-2">
+              <th className="">
+                <a href="" className="text-blue-600 underline">
+                  IT2024
+                </a>
+              </th>
+              <th className="py-3">IT</th>
+              <th className="py-3">02 February 2024</th>
+              <th className="py-3">Jeff</th>
+              <th className="py-3">
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  schedule
+                </span>
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  add_circle
+                </span>
+              </th>
+            </tr>
+            <tr className="border-cimbred border-x-0 border-y-2">
+              <th className="py-3">
+                <a href="" className="text-blue-600 underline">
+                  HR2024
+                </a>
+              </th>
+              <th className="py-3">HR</th>
+              <th className="py-3">02 February 2024</th>
+              <th className="py-3">Jeff</th>
+              <th className="py-3">
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  schedule
+                </span>
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  add_circle
+                </span>
+              </th>
+            </tr>
+            <tr className="border-cimbred border-x-0 border-y-2">
+              <th className="py-3">
+                <a href="" className="text-blue-600 underline">
+                  Management2024
+                </a>
+              </th>
+              <th className="py-3">Management</th>
+              <th className="py-3">02 February 2024</th>
+              <th className="py-3">Jeff</th>
+              <th className="py-3">
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  schedule
+                </span>
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  add_circle
+                </span>
+              </th>
+            </tr>
+            <tr className="border-cimbred border-x-0 border-y-2">
+              <th className="py-3">
+                <a href="" className="text-blue-600 underline">
+                  LnD2024
+                </a>
+              </th>
+              <th className="py-3">LnD</th>
+              <th className="py-3">02 February 2024</th>
+              <th className="py-3">Jeff</th>
+              <th className="py-3">
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  schedule
+                </span>
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  add_circle
+                </span>
               </th>
             </tr>
           </tbody>
