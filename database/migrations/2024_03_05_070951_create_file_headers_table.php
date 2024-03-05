@@ -12,13 +12,11 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('file_headers', function (Blueprint $table) {
-            $table->id('file_header_id');
-            $table->float('version');
+            $table->id();
+            $table->float('version')->unique();
             $table->date('file_date')->useCurrent();
-            $table->unsignedBigInteger('employee_id');
-            $table->unsignedBigInteger('category_id');
-            $table->foreignId('employee_id')->constrained('employees')->onUpdate('cascade');
-            $table->foreignId('category_id')->constrained('categories')->onUpdate('cascade');
+            $table->foreignId('employee_id')->constrained()->onUpdate('cascade');
+            $table->foreignId('category_id')->constrained()->onUpdate('cascade');
             $table->timestamps();
         });
     }
