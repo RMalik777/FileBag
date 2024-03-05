@@ -92,7 +92,7 @@ export default function Navbar() {
         <ul
           className={
             "sidebar h-screen fixed z-10 top-0 right-0 overflow-x-hidden pt-28 md:pt-22 duration-300 ease-out bg-cimbred " +
-            (nav ? "w-full sm:w-1/3 shadow-md" : "w-0 shadow-none")
+            (nav ? "w-full sm:w-1/3" : "w-0 shadow-none")
           }>
           <span
             className="material-symbols-rounded closebtn w-auto p-4 absolute top-0 right-0 px-3 pd:px-6 lg:px-12 xl:px-14 duration-300 ease-out text-6xl text-white hover:text-black"
@@ -101,11 +101,14 @@ export default function Navbar() {
             alt="Close Button">
             close
           </span>
-          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear max-md:hover:tracking-wider hover:underline ">
-            Home
+          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear hover:underline ">
+            <Link href="/">Home</Link>
           </li>
-          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear max-md:hover:tracking-wider hover:underline ">
-            Logout
+          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear hover:underline ">
+            <Link href="/Update">Update</Link>
+          </li>
+          <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear hover:underline ">
+            <Link href="/">Logout</Link>
           </li>
         </ul>
       </nav>
