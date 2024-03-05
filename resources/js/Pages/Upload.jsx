@@ -35,20 +35,23 @@ export default function Upload() {
 
     if (file.size > 3000000) {
       // alert("File size exceeds 3 MB limit!");
-      sizeValidaton = false;
+      // sizeValidaton = false;
+      setStatus(false);
       setUploadedFile(file);
       console.log("set false1");
       return;
     }
 
-    if (file.type !== "application/pdf") {
+    else if (file.type !== "application/pdf") {
       // alert("File type must be pdf!");
-      sizeValidaton = false;
+      // sizeValidaton = false;
+      setStatus(false);
       setUploadedFile(file);
       console.log("set false2");
       return;
-    } else if (file.type == "application/pdf") {
-      sizeValidaton = true;
+    } else{
+      // sizeValidaton = true;
+      setStatus(true);
       setUploadedFile(file);
       console.log("set true");
       return;
@@ -66,7 +69,7 @@ export default function Upload() {
     if (uploadedFile) {
       // setShowPopup(true); //if there is an uploaded file, show popup after upload is clicked
       setButtonPopup(true);
-      setStatus(sizeValidaton);
+      // setStatus(sizeValidaton);
     }
   };
 
@@ -131,10 +134,7 @@ export default function Upload() {
             {/* BENERIN CODENYA SIZE VALNYA GAMA MASUK KONTOL */}
             <button
               className="bg-white border border-4 border-cimbred text-cimbred font-bold text-2xl px-5 py-2 rounded-full duration-200 hover:bg-cimbred hover:text-white"
-              onClick={() => {
-                setButtonPopup(true);
-                setStatus(sizeValidaton);
-              }}>
+              onClick={handleUploadClick}>
               Upload
             </button>
           </div>
