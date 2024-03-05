@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\FileDetail;
+use App\Models\FileHeader;
 use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
@@ -11,14 +13,20 @@ class PageController extends Controller
 {
   public function index()
   {
-      return Inertia::render('Index');
+    $fileHeader = FileHeader::all();
+    $fileDetail = FileDetail::all();
+
+    return Inertia::render('Index', [
+      'fileHeader' => $fileHeader,
+      'fileDetail' => $fileDetail,
+    ]);
   }
   public function upload()
   {
-      return Inertia::render('Upload');
+    return Inertia::render('Upload');
   }
   public function login()
   {
-      return Inertia::render('Login');
+    return Inertia::render('Login');
   }
 }
