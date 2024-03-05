@@ -39,7 +39,7 @@ export default function Navbar() {
         />
         <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
           <ul className="flex flex-row">
-            <li className="text-gray-300 text-2xl lg:text-2xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-xl font-bold py-5 px-5">
               <Link
                 href="/"
                 className={
@@ -53,7 +53,7 @@ export default function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="text-gray-300 text-2xl lg:text-2xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-xl font-bold py-5 px-5">
               <Link
                 href="/upload"
                 className={
@@ -63,7 +63,7 @@ export default function Navbar() {
                 Upload
               </Link>
             </li>
-            <li className="text-gray-300 text-2xl lg:text-2xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-xl font-bold py-5 px-5">
               <Link
                 href="/"
                 className={
