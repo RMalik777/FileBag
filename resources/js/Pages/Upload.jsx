@@ -61,7 +61,7 @@ export default function Upload() {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
     // console.log(file);
-    // setFileType(file.type);
+    setFileType(file.type);
 
     if (file.size > 3000000) {
       // alert("File size exceeds 3 MB limit!");
