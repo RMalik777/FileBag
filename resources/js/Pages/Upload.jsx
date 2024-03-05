@@ -1,14 +1,10 @@
 import React, { useState } from "react";
 import { Head } from "@inertiajs/inertia-react";
-// import { ToastContainer, toast } from "react-toastify";
-// import "react-toastify/dist/ReactToastify.css";
-// import {useNavigate} from "react-router-dom";
 import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
 
 export default function Upload() {
   const [buttonPopup, setButtonPopup] = useState(false);
-  //change sizeValidation to swtich popup state
   let sizeValidaton = false;
   const [status, setStatus] = useState(false);
 
@@ -21,27 +17,19 @@ export default function Upload() {
   };
 
   const handleInput = (event) => {
-    // console.log("input");
-    // console.log(event);
     const file = event.target.files[0];
-    // console.log(file);
 
     if (file.size > 3000000) {
-      // alert("File size exceeds 3 MB limit!");
-      // sizeValidaton = false;
       setStatus(false);
       setUploadedFile(file);
       console.log("set false1");
       return;
     } else if (file.type !== "application/pdf") {
-      // alert("File type must be pdf!");
-      // sizeValidaton = false;
       setStatus(false);
       setUploadedFile(file);
       console.log("set false2");
       return;
     } else {
-      // sizeValidaton = true;
       setStatus(true);
       setUploadedFile(file);
       console.log("set true");
@@ -52,25 +40,19 @@ export default function Upload() {
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
-    // console.log(file);
     setFileType(file.type);
 
     if (file.size > 3000000) {
-      // alert("File size exceeds 3 MB limit!");
-      // sizeValidaton = false;
       setStatus(false);
       setUploadedFile(file);
       console.log("set false1");
       return;
     } else if (file.type !== "application/pdf") {
-      // alert("File type must be pdf!");
-      // sizeValidaton = false;
       setStatus(false);
       setUploadedFile(file);
       console.log("set false2");
       return;
     } else {
-      // sizeValidaton = true;
       setStatus(true);
       setUploadedFile(file);
       console.log("set true");
@@ -87,15 +69,8 @@ export default function Upload() {
     }
 
     if (uploadedFile) {
-      // setShowPopup(true); //if there is an uploaded file, show popup after upload is clicked
       setButtonPopup(true);
-      // setStatus(sizeValidaton);
     }
-  };
-
-  const handlePopupClose = () => {
-    setShowPopup(false);
-    navigate("/"); //after popup is closed, return to home page
   };
 
   return (
@@ -201,15 +176,6 @@ export default function Upload() {
           setTrigger={setButtonPopup}
           status={status}
         />
-
-        {showPopup && (
-          <div className="popup-container">
-            {/* Add your popup content and styling here */}
-            <img src="assets/green_checkmark.svg" alt="Success icon" />
-            <h2>File Successfully Uploaded!</h2>
-            <button onClick={handlePopupClose}>X</button>
-          </div>
-        )}
       </div>
     </>
   );
