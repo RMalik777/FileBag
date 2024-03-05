@@ -35,19 +35,19 @@ export default function Index() {
       <Navbar />
       <div className="w-full bg-cover bg-fixed bg-[url(../../../public/assets/homecover.jpg)] h-auto">
         <div className="flex flex-col justify-between backdrop-brightness-50 h-full pt-60 ">
-          <div className="px-12 flex flex-row justify-between">
+          <div className="px-12 flex flex-col gap-8 md:flex-row md:gap-0 justify-between">
             <div className="flex flex-col">
-              <h1 className="text-6xl text-white font-bold">
+              <h1 className="text-4xl lg:text-6xl text-white font-bold">
                 Project SOP Files
               </h1>
-              <h2 className="text-2xl text-white">
+              <h2 className="text-xl lg:text-2xl text-white">
                 *Maximum 3MB File Size in PDF Format
               </h2>
             </div>
             <div>
-              <a href="/upload">
-                <button className="group flex flex-row justify-center text-2xl px-5 py-3 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill">
-                  <span className="material-symbols-rounded pr-4 text-white text-3xl">
+              <a href="/upload" className="">
+                <button className="group flex flex-row justify-center items-center text-xl lg:text-3xl px-5 lg:px-7 py-3 lg:py-5 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill">
+                  <span className="material-symbols-rounded pr-4 text-white text-3xl lg:text-5xl">
                     cloud_upload
                   </span>
                   Upload
@@ -67,28 +67,33 @@ export default function Index() {
         </div>
       </div>
       <div className="h-auto w-full px-8 flex flex-col">
-        <div className="flex">
-          <select
-            id="category"
-            name="category"
-            defaultValue="category"
-            className="bg-3 font-bold rounded- text-white w-36 h-10 text-center mb-6">
-            <option className="hidden" selected>
-              Category
-            </option>
-            <option value={1}>IT</option>
-            <option value={2}>HR</option>
-            <option value={3}>Management</option>
-            <option value={4}>L&T</option>
-          </select>
-        </div>
-        <div className="flex flex-row justify-between">
-          <p>Choose the Following Category Below!</p>
+        <p>Choose the Following Category Below!</p>
+        <div className="flex flex-col md:flex-row justify-between md:items-center">
+          <div className="flex">
+            <select
+              id="category"
+              name="category"
+              defaultValue="category"
+              className="bg-3 font-bold rounded- text-white w-36 h-10 text-center mb-2">
+              <option className="hidden" selected>
+                Category
+              </option>
+              <option className="font-medium" value={1}>
+                IT
+              </option>
+              <option className="font-medium" value={2}>
+                HR
+              </option>
+              <option className="font-medium" value={3}>
+                Management
+              </option>
+              <option className="font-medium" value={4}>
+                L&T
+              </option>
+            </select>
+          </div>
           <form className="relative">
             <div className="w-full">
-              <div className="absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none">
-                <span className="material-symbols-rounded text-gray-200">search</span>
-              </div>
               <input
                 type="search"
                 id="default-search"
@@ -96,29 +101,32 @@ export default function Index() {
                 placeholder="Search"
                 required
               />
+              <span className="material-symbols-rounded absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-200">
+                search
+              </span>
             </div>
           </form>
         </div>
-        <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white text-2xl border-collapse border-spacing-y-10 mt-4">
-          <thead className="rounded-lg">
+        <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
+          <thead className="rounded-lg font-bold">
             <tr className="border-cimbred border-x-0 border-y-2 rounded-lg">
               <th style={{ width: '20%' }} className="py-5">File</th>
               <th style={{ width: '20%' }} className="py-5">Category</th>
-              <th style={{ width: '20%' }} className="py-5">Date Updated</th>
-              <th style={{ width: '20%' }} className="py-5">Uploaded By</th>
+              <th style={{ width: '20%' }} className="py-5 max-md:hidden">Date Updated</th>
+              <th style={{ width: '20%' }} className="py-5 max-md:hidden">Uploaded By</th>
               <th style={{ width: '20%' }} className="py-5">Action</th>
             </tr>
           </thead>
           <tbody className="bg-white text-black">
             {/* <tr className="border-cimbred border-x-0 border-y-2">
               <th className="">
-                <a href="" className="text-blue-600 underline">
+                <a href="" className="text-blue-600 underline break-all">
                   IT2024
                 </a>
               </th>
               <th className="py-3">IT</th>
-              <th className="py-3">02 February 2024</th>
-              <th className="py-3">Jeff</th>
+              <th className="py-3 max-md:hidden">02 February 2024</th>
+              <th className="py-3 max-md:hidden">Jeff</th>
               <th className="py-3">
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   schedule
@@ -130,13 +138,13 @@ export default function Index() {
             </tr>
             <tr className="border-cimbred border-x-0 border-y-2">
               <th className="py-3">
-                <a href="" className="text-blue-600 underline">
+                <a href="" className="text-blue-600 underline break-all">
                   HR2024
                 </a>
               </th>
               <th className="py-3">HR</th>
-              <th className="py-3">02 February 2024</th>
-              <th className="py-3">Jeff</th>
+              <th className="py-3 max-md:hidden">02 February 2024</th>
+              <th className="py-3 max-md:hidden">Jeff</th>
               <th className="py-3">
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   schedule
@@ -148,13 +156,13 @@ export default function Index() {
             </tr>
             <tr className="border-cimbred border-x-0 border-y-2">
               <th className="py-3">
-                <a href="" className="text-blue-600 underline">
+                <a href="" className="text-blue-600 underline break-all">
                   Management2024
                 </a>
               </th>
               <th className="py-3">Management</th>
-              <th className="py-3">02 February 2024</th>
-              <th className="py-3">Jeff</th>
+              <th className="py-3 max-md:hidden">02 February 2024</th>
+              <th className="py-3 max-md:hidden">Jeff</th>
               <th className="py-3">
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   schedule
@@ -166,13 +174,13 @@ export default function Index() {
             </tr>
             <tr className="border-cimbred border-x-0 border-y-2">
               <th className="py-3">
-                <a href="" className="text-blue-600 underline">
+                <a href="" className="text-blue-600 underline break-all">
                   LnD2024
                 </a>
               </th>
               <th className="py-3">LnD</th>
-              <th className="py-3">02 February 2024</th>
-              <th className="py-3">Jeff</th>
+              <th className="py-3 max-md:hidden">02 February 2024</th>
+              <th className="py-3 max-md:hidden">Jeff</th>
               <th className="py-3">
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   schedule

@@ -1,12 +1,6 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
-
-* {
-  font-family: "Satoshi", sans-serif;
-  margin:0;
-  max-width: 100svw;
-}
 @layer utilities {
   .material-symbols-rounded {
     font-variation-settings:

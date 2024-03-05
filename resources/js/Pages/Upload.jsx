@@ -26,9 +26,41 @@ export default function Upload() {
     event.preventDefault();
   };
 
+  const handleInput = (event) => {
+    // console.log("input");
+    // console.log(event);
+    const file = event.target.files[0];
+    // console.log(file); 
+
+    if (file.size > 3000000) {
+      // alert("File size exceeds 3 MB limit!");
+      // sizeValidaton = false;
+      setStatus(false);
+      setUploadedFile(file);
+      console.log("set false1");
+      return;
+    }
+
+    else if (file.type !== "application/pdf") {
+      // alert("File type must be pdf!");
+      // sizeValidaton = false;
+      setStatus(false);
+      setUploadedFile(file);
+      console.log("set false2");
+      return;
+    } else{
+      // sizeValidaton = true;
+      setStatus(true);
+      setUploadedFile(file);
+      console.log("set true");
+      return;
+    }
+  };
+
   const handleDrop = (event) => {
     event.preventDefault();
     const file = event.dataTransfer.files[0];
+    // console.log(file);
     setFileType(file.type);
 
     if (file.size > 3000000) {
@@ -91,17 +123,17 @@ export default function Upload() {
               </h1>
               <label
                 htmlFor="title"
-                className="text-2xl text-black font-bold mb-5">
+                className="text-2xl text-black font-bold">
                 Title <span className="text-red-600">*</span>
               </label>
               <input
                 name="title"
                 type="text"
-                className="form-input p-2 border border-solid border-black rounded-md mb-4 font-medium"
+                className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium"
               />
               <label
                 htmlFor="category"
-                className="text-2xl text-black font-bold mb-5">
+                className="text-2xl text-black font-bold">
                 Category <span className="text-red-600">*</span>
               </label>
               <select
@@ -113,16 +145,18 @@ export default function Upload() {
                 <option className="font-medium" value="l&t">L&T</option>
               </select>
             </div>
-            <div
+            <input type="file" name="uploadfile" id="uploadfile" onChange={handleInput} hidden />
+            <label
+              for="uploadfile"
               className="flex flex-col items-center justify-center mb-8 h-auto aspect-video max-w-4xl min-w-60 w-1/2 border border-4 border-zinc-400 rounded-lg"
               onDragOver={handleDragOver}
               onDrop={handleDrop}>
               <span class="material-symbols-rounded text-9xl text-zinc-300">
                 cloud_upload
               </span>
-              <p className="text-lg font-medium">Maximum size 3mb, PDF format only</p>
+              <p className="text-lg font-medium text-center">Click to upload or drag and drop<br />Maximum size 3mb, PDF format only</p>
               {uploadedFile && <p>Uploaded file: {uploadedFile.name} | Upload time: {new Date().toLocaleString()}</p>}
-            </div>
+            </label>
           </div>
         </main>
 
