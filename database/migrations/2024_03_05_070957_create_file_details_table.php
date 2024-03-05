@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('file_details', function (Blueprint $table) {
             $table->id('file_detail_id');
-            $table->unsignedBigInteger('file_header_id');
+            $table->unsignedBigInteger('file_header_id');`
             $table->foreignId('file_header_id')->constrained('file_headers')->onUpdate('cascade');
             $table->string('file_name', 255);
             $table->float('file_size');
