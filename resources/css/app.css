@@ -1,3 +1,104 @@
+/*ini css buat Upload.jsx */
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+h1 {
+  font-size: 3.815rem;
+  font-size: clamp(
+    3.815rem,
+    3.2699999999999996rem + 1.3625000000000005vw,
+    4.578rem
+  );
+}
+h2 {
+  font-size: 3.052rem;
+  font-size: clamp(3.052rem, 2.616rem + 1.0899999999999996vw, 3.6624rem);
+}
+h3 {
+  font-size: 2.441rem;
+  font-size: clamp(
+    2.441rem,
+    2.092285714285714rem + 0.8717857142857142vw,
+    2.9292rem
+  );
+}
+h4 {
+  font-size: 1.953rem;
+  font-size: clamp(
+    1.953rem,
+    1.6740000000000002rem + 0.6974999999999997vw,
+    2.3436rem
+  );
+}
+h5 {
+  font-size: 1.563rem;
+  font-size: clamp(
+    1.563rem,
+    1.3397142857142856rem + 0.5582142857142857vw,
+    1.8756rem
+  );
+}
+h6 {
+  font-size: 1.25rem;
+  font-size: clamp(
+    1.25rem,
+    1.0714285714285714rem + 0.4464285714285714vw,
+    1.5rem
+  );
+}
+p {
+  font-size: 1rem;
+  font-size: clamp(1rem, 0.8571428571428572rem + 0.35714285714285704vw, 1.2rem);
+  letter-spacing: 0.01rem;
+  line-height: 1.7;
+}
+small {
+  font-size: 0.8rem;
+  font-size: clamp(
+    0.8rem,
+    0.6857142857142858rem + 0.28571428571428553vw,
+    0.96rem
+  );
+}
+* {
+  font-family: "Satoshi", sans-serif;
+  margin:0;
+  max-width: 100svw;
+}
+@layer utilities {
+  .material-symbols-rounded {
+    font-variation-settings:
+    'FILL' 0,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
+  }
+  .material-fill {
+    font-variation-settings:
+    'FILL' 1,
+    'wght' 700,
+    'GRAD' 200,
+    'opsz' 48
+  }
+}
+
+
+
+.popup-container {
+  position: fixed; /* Ensures popup is positioned relative to the viewport */
+  top: 50%; /* Vertical centering: 50% of viewport height */
+  left: 50%; /* Horizontal centering: 50% of viewport width */
+  transform: translate(-50%, -50%); /* Adjust positioning based on element size */
+  background-color: white; /* Adjust background color as needed */
+  padding: 20px; /* Adjust padding as needed */
+  border: 1px solid #ddd; /* Optional border */
+  z-index: 999; /* Ensure popup is above other elements */
+}
+
+.close-button { /*still does nothing tbh*/
+  position:absolute; /* Absolute positioning within the popup */
+  top: 10px; /* Adjust top position from the top edge */
+  right: 10px; /* Adjust right position from the right edge */
+}

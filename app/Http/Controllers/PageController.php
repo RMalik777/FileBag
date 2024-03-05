@@ -11,4 +11,12 @@ class PageController extends Controller
   {
       return Inertia::render('Index');
   }
+  public function upload()
+  {
+      return Inertia::render('Upload');
+  }
+  public function login()
+  {
+      return Inertia::render('Login');
+  }
 }

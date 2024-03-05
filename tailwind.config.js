@@ -2,7 +2,7 @@
 export default {
   content: [
     "./resources/**/*.blade.php",
-    "./resources/**/*.js",
+    "./resources/**/*.jsx",
     "./resources/**/*.vue",
   ],
   theme: {
@@ -13,6 +13,7 @@ export default {
         "3": "#8F250B",
         "4": "#BB4D00",
         "5": "#CA5210",
+        "cimbred": "#790008",
       },
     },
   },
