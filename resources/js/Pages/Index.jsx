@@ -20,7 +20,7 @@ export default function Index() {
             </div>
             <div>
               <a href="/upload">
-                <button className="group flex flex-row justify-center text-2xl px-5 py-3 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black">
+                <button className="group flex flex-row justify-center text-2xl px-5 py-3 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill">
                   <span className="material-symbols-rounded pr-4 text-white text-3xl">
                     cloud_upload
                   </span>
@@ -41,7 +41,7 @@ export default function Index() {
         </div>
       </div>
       <div className="h-auto">
-        <div className="flex">
+        <div className="flex px-8">
           <select
             id="category"
             name="category"
@@ -56,7 +56,7 @@ export default function Index() {
             <option value={4}>L&T</option>
           </select>
         </div>
-        <div className="flex flex-row justify-between">
+        <div className="flex flex-row justify-between px-8">
           <p>Choose the Following Category Below!</p>
           <form className="relative pm">
             <div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">

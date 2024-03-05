@@ -129,7 +129,6 @@ export default function Upload() {
           <p className="text-red-600 font-medium text-lg">* Required field</p>
           <div className="flex flex-row gap-14 items-center">
             <button className="bg-white border border-4 border-white font-bold text-2xl px-5 py-2 rounded-full duration-200 hover:bg-black hover:text-white hover:border-black">Cancel</button>
-            {/* BENERIN CODENYA SIZE VALNYA GAMA MASUK KONTOL */}
             <button
               className="bg-white border border-4 border-cimbred text-cimbred font-bold text-2xl px-5 py-2 rounded-full duration-200 hover:bg-cimbred hover:text-white"
               onClick={() => {
