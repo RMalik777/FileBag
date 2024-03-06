@@ -135,7 +135,7 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {category.map((item, index) => (
+            {header.map((item, index) => (
               <tr
                 key={item.id}
                 className="border-cimbred border-x-0 border-y-2">
