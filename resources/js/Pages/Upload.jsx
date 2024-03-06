@@ -4,7 +4,6 @@ import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
 
 export default function Upload(props, { csrf_token }) {
-  console.log(usePage().props.flash.success);
   const categories = props.category;
   const [buttonPopup, setButtonPopup] = useState(false);
   let sizeValidaton = false;
@@ -78,7 +77,7 @@ export default function Upload(props, { csrf_token }) {
     <>
       <Head title="Upload | Filebag" />
       <Navbar />
-      <form action="/upload" method="POST" enctype="multipart/form-data">
+      <form action="/upload" method="POST" encType="multipart/form-data">
         <div className="flex flex-col w-full h-screen bg-white pt-12">
           <main className="flex flex-auto flex-col items-center">
             <div className="flex flex-col lg:flex-row w-full justify-between items-center h-auto lg:h-full px-32">

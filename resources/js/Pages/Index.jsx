@@ -129,20 +129,20 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {header.map((item, index) => (
+            {category.map((item, index) => (
               <tr
                 key={item.id}
                 className="border-cimbred border-x-0 border-y-2">
                 <td className="py-3">
                   <span className="duration-300 ease-out">
-                    {detail[item.id - 1].file_name}
+                    {detail[item.id - 1]?.file_name}
                   </span>
                 </td>
                 <td className="py-3 ">
                   {category[item.id - 1]?.category_name}
                 </td>
                 <td className="py-3 text-center">{item.file_date}</td>
-                <td className="py-3 text-center">{users[item.id-1].username}</td>
+                <td className="py-3 text-center">{users[item.id-1]?.username}</td>
                 <td className="text-center *:px-1 *:text-4xl">
                   <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
                     schedule
