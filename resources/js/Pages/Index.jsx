@@ -63,13 +63,13 @@ export default function Index(props) {
         <p className="text-xl font-bold text-cimbred">
           Choose the Following Category Below!
         </p>
-        <div className="flex flex-col md:flex-row justify-between md:items-center mb-2">
+        <div className="flex w-full flex-col md:flex-row justify-between md:items-center mb-2">
           <div className="flex">
             <select
               id="category"
               name="category"
               defaultValue="category"
-              className="bg-cimbred font-bold rounded-md text-white text-center px-5 py-3">
+              className="bg-cimbred font-bold rounded-md text-white text-left px-2 py-3">
               <option className="hidden" selected>
                 Category
               </option>
@@ -87,16 +87,16 @@ export default function Index(props) {
               </option>
             </select>
           </div>
-          <form className="relative">
+          <form className="relative w-1/3">
             <div className="w-full">
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-36 py-3 rounded-full bg-cimbred text-white placeholder-gray-100"
+                className="block w-full pl-16 pr-8 py-4 text-lg font-medium border border-gray-300 rounded-full bg-cimbred text-white placeholder-gray-100"
                 placeholder="Search"
                 required
               />
-              <span className="material-symbols-rounded absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
+              <span className="material-symbols-rounded absolute ml-2 inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
                 search
               </span>
             </div>
