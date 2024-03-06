@@ -30,17 +30,17 @@ export default function Index(props) {
         <div className="flex flex-col justify-between backdrop-brightness-50 h-full pt-60 ">
           <div className="px-12 flex flex-col gap-8 md:flex-row md:gap-0 justify-between">
             <div className="flex flex-col">
-              <h1 className="text-4xl lg:text-6xl text-white font-bold">
+              <h1 className="text-4xl lg:text-5xl text-white pb-3 font-bold">
                 Project SOP Files
               </h1>
-              <h2 className="text-xl lg:text-2xl text-white">
+              <h2 className="text-xl lg:text-xl text-white">
                 *Maximum 3MB File Size in PDF Format
               </h2>
             </div>
             <div>
               <a href="/upload" className="">
-                <button className="group flex flex-row justify-center items-center text-xl lg:text-3xl px-5 lg:px-7 py-3 lg:py-5 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill">
-                  <span className="material-symbols-rounded pr-4 text-white text-3xl lg:text-5xl">
+                <button className="group flex flex-row justify-center items-center text-xl lg:text-2xl px-5 py-3 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill">
+                  <span className="material-symbols-rounded pr-4 text-white text-2xl">
                     cloud_upload
                   </span>
                   Upload
