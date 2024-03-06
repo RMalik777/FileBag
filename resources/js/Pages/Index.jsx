@@ -9,9 +9,10 @@ export default function Index(props) {
   const category = props.category;
   const users = props.users;
 
-  const [fileHeaders, setFileHeaders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(2); //per page nampilin 4 kolom data
+  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
+
+  console.log(detail);
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
@@ -21,9 +22,6 @@ export default function Index(props) {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  
-
 
   return (
     <>
@@ -127,22 +125,28 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {header.map((item, index) =>(
-              <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                <td className="text-center"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id-1]?.file_name}</span></td>
-                <td className="text-center">{item.category_id}</td>
-                <td className="text-center">{item.file_date}</td>
-                <td className="text-center">{item.employee_id}</td>
-                <td className="text-center">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  {/* Replace with clock icon code */}
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                    schedule
+            {header.map((item, index) => (
+              <tr
+                key={item.id}
+                className="border-cimbred border-x-0 border-y-2">
+                <td className="py-3">
+                  <span className="duration-300 ease-out">
+                    {detail[item.id - 1].file_name}
                   </span>
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  {/* Replace with plus icon code */}
+                </td>
+                <td className="py-3 ">
+                  {category[item.id - 1]?.category_name}
+                </td>
+                <td className="py-3 text-center">{item.file_date}</td>
+                <td className="py-3 text-center">{item.employee_id}</td>
+                <td className="text-center">
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                    {/* Replace with clock icon code */}
+                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                      schedule
+                    </span>
+                  </span>
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
                     add_circle
                   </span>
                   <a href={detail[item.id-1].file_path} download>
