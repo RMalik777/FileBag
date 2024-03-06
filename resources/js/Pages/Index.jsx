@@ -149,7 +149,7 @@ export default function Index(props) {
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
                     add_circle
                   </span>
-                  <a href="files/sample.pdf" download>
+                  <a href={detail[item.id-1].file_path} download>
                     <span class="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
                       download_for_offline
                     </span>
