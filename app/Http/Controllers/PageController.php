@@ -50,9 +50,7 @@ class PageController extends Controller
       ]);
     }
     else{
-      return Inertia::render('Login', [
-        'csrf_token' => csrf_token()
-      ]);
+      return redirect('/login');
     }
   }
   public function upload()
