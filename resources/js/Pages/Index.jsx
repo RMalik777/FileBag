@@ -147,7 +147,6 @@ export default function Index(props) {
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     schedule
                   </span>
-                </span>
                   {/* Replace with plus icon code */}
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     add_circle
