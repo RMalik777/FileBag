@@ -35,4 +35,8 @@ class PageController extends Controller
   {
     return Inertia::render('Login');
   }
+  public function PopVersioning()
+  {
+    return Inertia::render('PopVersioning');
+  }
 }
