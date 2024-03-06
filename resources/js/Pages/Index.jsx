@@ -142,17 +142,17 @@ export default function Index(props) {
                   {category[item.id - 1]?.category_name}
                 </td>
                 <td className="py-3 text-center">{item.file_date}</td>
-                <td className="py-3 text-center">{item.employee_id}</td>
-                <td className="text-center">
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                <td className="py-3 text-center">{users[item.id-1].username}</td>
+                <td className="text-center *:px-1 *:text-4xl">
+                  <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
                     schedule
                   </span>
                   {/* Replace with plus icon code */}
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                  <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
                     add_circle
                   </span>
                   <a href={detail[item.id-1].file_path} download>
-                    <span class="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                    <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
                       download_for_offline
                     </span>
                   </a>
