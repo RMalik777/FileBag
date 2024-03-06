@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import { Head } from "@inertiajs/inertia-react";
+import { Head } from "@inertiajs/react";
 
 export default function Index(props) {
   //data buat tabel
@@ -141,12 +141,11 @@ export default function Index(props) {
                 <td className="py-3 text-center">{item.employee_id}</td>
                 <td className="text-center">
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                    {/* Replace with clock icon code */}
-                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
-                      schedule
-                    </span>
+                    schedule
                   </span>
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                </span>
+                  {/* Replace with plus icon code */}
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     add_circle
                   </span>
                   <a href={detail[item.id-1].file_path} download>
