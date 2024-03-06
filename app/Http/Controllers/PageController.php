@@ -10,12 +10,18 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Illuminate\Pagination\Paginator;
+use Illuminate\Support\ServiceProvider;
 
 class PageController extends Controller
 {
-  public function index()
+  public function index(Request $request)
   {
-    $fileHeader = FileHeader::all();
+    //php artisan migrate:fresh --seed
+
+    Paginator::useBootstrap();
+
+    $fileHeader = FileHeader::all(); 
     $fileDetail = FileDetail::all();
     $category = Category::all();
     $users = User::all();

@@ -34,17 +34,35 @@ class FileDetailSeeder extends Seeder
                 'file_size' => 1.2,
                 'file_path' => 'C:/Public/LnT'
             ],
-            [
-                'file_name' => 'SOP_HR_2023',
-                'file_size' => 0.6,
-                'file_path' => 'C:/Public/HR'
-            ],
-            [
-                'file_name' => 'SOP_LnT_2023',
-                'file_size' => 1.3,
-                'file_path' => 'C:/Public/LnT'
-            ],
         ];
         DB::table('file_details')->insert($file_details);
+
+        // $file_headers = [
+        //     [
+        //         'version' => '1.00',
+        //         'file_date' => '2023-12-12',
+        //     ],
+        //     [
+        //         'version' => '2.00',
+        //         'file_date' => '2023-10-08',
+        //     ],
+        //     [
+        //         'version' => '4.00',
+        //         'file_date' => '2024-01-04',
+        //     ],
+        //     [
+        //         'version' => '3.00',
+        //         'file_date' => '2023-12-22',
+        //     ],
+        //     [
+        //         'version' => '1.00',
+        //         'file_date' => '2023-01-08',
+        //     ],
+        //     [
+        //         'version' => '2.00',
+        //         'file_date' => '2023-02-10',
+        //     ],
+        // ];
+        // DB::table('file_headers')->insert($file_headers);
     }
 }
