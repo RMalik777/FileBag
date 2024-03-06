@@ -17,7 +17,6 @@ export default function Navbar() {
   useEffect(() => {
     const handleScroll = () => {
       setScrollY(window.scrollY);
-      console.log(scrollY);
     };
     handleScroll();
     window.addEventListener("scroll", handleScroll);
@@ -35,11 +34,11 @@ export default function Navbar() {
         <img
           src="assets/logox.svg"
           alt="Filebag logo"
-          className="w-1/4 max-xl:hidden pb-3"
+          className="w-1/5 max-xl:hidden pb-3"
         />
         <div className="max-lg:order-1 max-lg:self-center max-lg:w-full">
           <ul className="flex flex-row">
-            <li className="text-gray-300 text-xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-md font-bold py-5 px-5">
               <Link
                 href="/"
                 className={
@@ -53,7 +52,7 @@ export default function Navbar() {
                 Home
               </Link>
             </li>
-            <li className="text-gray-300 text-xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-md font-bold py-5 px-5">
               <Link
                 href="/upload"
                 className={
@@ -63,7 +62,7 @@ export default function Navbar() {
                 Upload
               </Link>
             </li>
-            <li className="text-gray-300 text-xl font-bold py-5 px-5">
+            <li className="text-gray-300 text-md font-bold py-5 px-5">
               <Link
                 href="/"
                 className={
@@ -77,8 +76,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="hidden max-lg:order-3 lg:flex flex-col w-fit font-bold text-white items-center py-2">
-        <p className="">Calvin</p>
-        <p className="font-medium">Project&nbsp;Manager</p>
+        <p className="text-md">Calvin&nbsp;|&nbsp;<span className="font-medium">Project&nbsp;Manager</span></p>
       </div>
       <div className="p-5 order-2 lg:hidden">
         <span

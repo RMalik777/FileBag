@@ -7,5 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class FileHeader extends Model
 {
-    use HasFactory;
+    public function employee(){
+        return $this->belongsToMany(Employee::class);
+    }
+
+    public function category(){
+        return $this->belongsTo(Category::class);
+    }
+
+    public function fileDetail(){
+        return $this->hasMany(FileDetail::class);
+    }
 }

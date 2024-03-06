@@ -2,27 +2,19 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Head } from "@inertiajs/inertia-react";
 
-export default function Index() {
-
+export default function Index(fileHeader, fileDetail) {
   //data buat tabel
-  const data = [
-    { file: 'IT2024', category: 'IT', dateUpdated: '02 February 2024', uploadedBy: 'John Doe'},
-    { file: 'HR2024', category: 'HR', dateUpdated: '02 February 2024', uploadedBy: 'John Doe'},
-    { file: 'Management2024', category: 'Management', dateUpdated: '02 February 2024', uploadedBy: 'John Doe'},
-    { file: 'LnD2023', category: 'LnD', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
-    { file: 'IT2023', category: 'IT', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
-    { file: 'HR2023', category: 'HR', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
-    { file: 'Management2023', category: 'Management', dateUpdated: '02 February 2023', uploadedBy: 'John Doe'},
-  ];
+  const header = fileHeader.fileHeader;
+  const detail = fileHeader.fileDetail;
+  // console.log(detail);
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
 
-  const totalPages = Math.ceil(data.length / itemsPerPage);
+  const totalPages = Math.ceil(header.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-  const currentItems = data.slice(indexOfFirstItem, indexOfLastItem);
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -118,85 +110,13 @@ export default function Index() {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {/* <tr className="border-cimbred border-x-0 border-y-2">
-              <th className="">
-                <a href="" className="text-blue-600 underline break-all">
-                  IT2024
-                </a>
-              </th>
-              <th className="py-3">IT</th>
-              <th className="py-3 max-md:hidden">02 February 2024</th>
-              <th className="py-3 max-md:hidden">Jeff</th>
-              <th className="py-3">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  schedule
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  add_circle
-                </span>
-              </th>
-            </tr>
-            <tr className="border-cimbred border-x-0 border-y-2">
-              <th className="py-3">
-                <a href="" className="text-blue-600 underline break-all">
-                  HR2024
-                </a>
-              </th>
-              <th className="py-3">HR</th>
-              <th className="py-3 max-md:hidden">02 February 2024</th>
-              <th className="py-3 max-md:hidden">Jeff</th>
-              <th className="py-3">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  schedule
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  add_circle
-                </span>
-              </th>
-            </tr>
-            <tr className="border-cimbred border-x-0 border-y-2">
-              <th className="py-3">
-                <a href="" className="text-blue-600 underline break-all">
-                  Management2024
-                </a>
-              </th>
-              <th className="py-3">Management</th>
-              <th className="py-3 max-md:hidden">02 February 2024</th>
-              <th className="py-3 max-md:hidden">Jeff</th>
-              <th className="py-3">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  schedule
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  add_circle
-                </span>
-              </th>
-            </tr>
-            <tr className="border-cimbred border-x-0 border-y-2">
-              <th className="py-3">
-                <a href="" className="text-blue-600 underline break-all">
-                  LnD2024
-                </a>
-              </th>
-              <th className="py-3">LnD</th>
-              <th className="py-3 max-md:hidden">02 February 2024</th>
-              <th className="py-3 max-md:hidden">Jeff</th>
-              <th className="py-3">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  schedule
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  add_circle
-                </span>
-              </th>
-            </tr> */}
-            {currentItems.map((item, index) =>(
-              <tr key={index}>
-                <td>{item.file}</td>
-                <td className="text-center">{item.category}</td>
-                <td className="text-center">{item.dateUpdated}</td>
-                <td className="text-center">{item.uploadedBy}</td>
-                <td style={{ textAlign: 'center' }}>
+            {header.map((item, index) =>(
+              <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
+                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id]?.file_name}</span></td>
+                <td className="py-3">{item.category_id}</td>
+                <td className="py-3">{item.file_date}</td>
+                <td className="py-3">{item.employee_id}</td>
+                <td className="text-center">
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   {/* Replace with clock icon code */}
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">

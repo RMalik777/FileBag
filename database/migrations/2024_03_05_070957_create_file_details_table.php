@@ -12,9 +12,7 @@ return new class extends Migration
     public function up(): void
     {
         Schema::create('file_details', function (Blueprint $table) {
-            $table->id('file_detail_id');
-            $table->unsignedBigInteger('file_header_id');
-            $table->foreignId('file_header_id')->constrained('file_headers')->onUpdate('cascade');
+            $table->id();
             $table->string('file_name', 255);
             $table->float('file_size');
             $table->string('file_path', 255);
