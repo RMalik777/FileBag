@@ -2,11 +2,12 @@ import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import { Head } from "@inertiajs/inertia-react";
 
-export default function Index(fileHeader, fileDetail) {
+export default function Index(props) {
   //data buat tabel
-  const header = fileHeader.fileHeader;
-  const detail = fileHeader.fileDetail;
-  // console.log(detail);
+  const header = props.fileHeader;
+  const detail = props.fileDetail;
+  const category = props.category;
+  const users = props.users;
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
@@ -50,11 +51,12 @@ export default function Index(fileHeader, fileDetail) {
           <svg
             xmlns="http://www.w3.org/2000/svg"
             viewBox="0 0 1440 320"
-            className="h-fit w-100">
+            className="h-fit w-100 -mb-1">
             <path
               fill="#ffffff"
               fillOpacity="1"
-              d="M0,224L40,197.3C80,171,160,117,240,112C320,107,400,149,480,186.7C560,224,640,256,720,229.3C800,203,880,117,960,112C1040,107,1120,181,1200,224C1280,267,1360,277,1400,282.7L1440,288L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"></path>
+              d="M0,224L40,197.3C80,171,160,117,240,112C320,107,400,149,480,186.7C560,224,640,256,720,229.3C800,203,880,117,960,112C1040,107,1120,181,1200,224C1280,267,1360,277,1400,282.7L1440,288L1440,320L1400,320C1360,320,1280,320,1200,320C1120,320,1040,320,960,320C880,320,800,320,720,320C640,320,560,320,480,320C400,320,320,320,240,320C160,320,80,320,40,320L0,320Z"
+              className=""></path>
           </svg>
         </div>
       </div>
@@ -112,8 +114,8 @@ export default function Index(fileHeader, fileDetail) {
           <tbody className="bg-white text-black">
             {header.map((item, index) =>(
               <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id]?.file_name}</span></td>
-                <td className="py-3">{item.category_id}</td>
+                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out"><a href="files/sample.pdf" download>{detail[item.id-1].file_name}</a></span></td>
+                <td className="py-3">{category[item.id-1]?.category_name}</td>
                 <td className="py-3">{item.file_date}</td>
                 <td className="py-3">{item.employee_id}</td>
                 <td className="text-center">
