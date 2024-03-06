@@ -7,7 +7,6 @@ import Poto2 from "../../../public/assets/Poto2.png";
 import filexCIMB from "../../../public/assets/filexCIMB.png";
 
 export default function Login({ csrf_token }) {
-  console.log(usePage().props);
   const photos = [Poto, Poto1, Poto2];
   const [selectedPhotoIndex, setSelectedPhotoIndex] = useState(0);
 
@@ -39,7 +38,7 @@ export default function Login({ csrf_token }) {
             </h2>
           </div>
         </div>
-        
+
         <div className="flex lg:flex-[55%] h-auto lg:h-full max-lg:rounded-md items-center justify-center bg-cimbred">
           <div className="w-full max-w-md p-8">
             <h2 className="text-white font-semibold text-3xl mb-8 text-center">
@@ -50,6 +49,11 @@ export default function Login({ csrf_token }) {
               alt="Company Logo"
               className="w-[300px] mb-8 mx-auto"
             />
+            {
+              <div className="text-white font-medium p-2">
+                {usePage().props.flash.error}
+              </div>
+            }
             <form method="POST" action="login">
               <input type="hidden" name="_token" value={csrf_token} />
               <div className="mb-4">
@@ -63,9 +67,6 @@ export default function Login({ csrf_token }) {
                   className="w-full border border-gray-300 rounded-lg p-2"
                   required
                 />
-                {<div className="text-white font-medium">
-                  {usePage().props.flash.errors}
-                  </div>}
               </div>
               <div className="mb-4">
                 <label htmlFor="password" className="text-white block">

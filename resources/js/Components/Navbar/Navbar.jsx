@@ -64,7 +64,7 @@ export default function Navbar(props) {
             </li>
             <li className="text-gray-300 text-md font-bold py-5 px-5">
               <Link
-                href="/"
+                href="/logout"
                 className={
                   (url === "" ? "text-white" : "") +
                   " hover:text-1 hover:underline duration-200 ease-out"

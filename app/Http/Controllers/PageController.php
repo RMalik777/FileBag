@@ -38,4 +38,8 @@ class PageController extends Controller
       'csrf_token' => csrf_token()
     ]);
   }
+  public function PopVersioning()
+  {
+    return Inertia::render('PopVersioning');
+  }
 }
