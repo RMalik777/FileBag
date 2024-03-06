@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\PageController;
+use App\Http\Controllers\UploadController;
 use App\Http\Controllers\UserLoginController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
@@ -22,3 +23,4 @@ Route::get('/login', [PageController::class, 'login']);
 Route::post('/login', [UserLoginController::class, 'store']);
 Route::get('/PopVersioning', [PageController::class, 'PopVersioning']);
 Route::get('/logout', [UserloginController::class, 'logout']);
+Route::post('/upload', [UploadController::class, 'upload'])->name('upload');

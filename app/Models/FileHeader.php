@@ -18,4 +18,7 @@ class FileHeader extends Model
     public function fileDetail(){
         return $this->hasMany(FileDetail::class);
     }
+
+    protected $fillable = ['title', 'version', 'file_id'];
+    
 }
