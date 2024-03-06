@@ -15,12 +15,11 @@ export default function Index(props) {
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
-  const indexOfFirstItem = indexOfLastItem - itemsPerPage;;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
 
   return (
     <>
@@ -61,7 +60,9 @@ export default function Index(props) {
         </div>
       </div>
       <div className="h-auto w-full px-8 flex flex-col">
-        <p className="text-xl font-bold text-cimbred">Choose the Following Category Below!</p>
+        <p className="text-xl font-bold text-cimbred">
+          Choose the Following Category Below!
+        </p>
         <div className="flex flex-col md:flex-row justify-between md:items-center mb-2">
           <div className="flex">
             <select
@@ -101,63 +102,87 @@ export default function Index(props) {
             </div>
           </form>
         </div>
-          <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
-            <thead className="rounded-full font-bold">
-              <tr className="border-cimbred border-x-0 border-y-2">
-                <th style={{ width: '20%' }} className="py-5">File</th>
-                <th style={{ width: '20%' }} className="py-5">Category</th>
-                <th style={{ width: '20%' }} className="py-5 max-md:hidden">Date Updated</th>
-                <th style={{ width: '20%' }} className="py-5 max-md:hidden">Uploaded By</th>
-                <th style={{ width: '20%' }} className="py-5">Action</th>
-              </tr>
-            </thead>
-            <tbody className="bg-white text-black">
-              {header.map((item, index) =>(
-                <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                  <td className="py-3"><span className="text-black hover:text-cimbred underline cursor-pointer duration-300 ease-out"><a href="files/sample.pdf" download>{detail[item.id-1].file_name}</a></span></td>
-                  <td className="py-3 ">{category[item.id-1]?.category_name}</td>
-                  <td className="py-3 text-center">{item.file_date}</td>
-                  <td className="py-3 text-center">{item.employee_id}</td>
-                  <td className="text-center">
+        <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
+          <thead className="rounded-full font-bold">
+            <tr className="border-cimbred border-x-0 border-y-2">
+              <th style={{ width: "20%" }} className="py-5">
+                File
+              </th>
+              <th style={{ width: "20%" }} className="py-5">
+                Category
+              </th>
+              <th style={{ width: "20%" }} className="py-5 max-md:hidden">
+                Date Updated
+              </th>
+              <th style={{ width: "20%" }} className="py-5 max-md:hidden">
+                Uploaded By
+              </th>
+              <th style={{ width: "20%" }} className="py-5">
+                Action
+              </th>
+            </tr>
+          </thead>
+          <tbody className="bg-white text-black">
+            {header.map((item, index) => (
+              <tr
+                key={item.id}
+                className="border-cimbred border-x-0 border-y-2">
+                <td className="py-3">
+                  <span className="duration-300 ease-out">
+                    {detail[item.id - 1].file_name}
+                  </span>
+                </td>
+                <td className="py-3 ">
+                  {category[item.id - 1]?.category_name}
+                </td>
+                <td className="py-3 text-center">{item.file_date}</td>
+                <td className="py-3 text-center">{item.employee_id}</td>
+                <td className="text-center">
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     {/* Replace with clock icon code */}
-                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
                       schedule
                     </span>
                   </span>
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                    {/* Replace with plus icon code */}
-                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                      add_circle
-                    </span>
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                    add_circle
                   </span>
+                  <a href="files/sample.pdf" download>
+                    <span class="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                      download_for_offline
+                    </span>
+                  </a>
                 </td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
+              </tr>
+            ))}
+          </tbody>
+        </table>
 
-
-        <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
-        {Array.from({ length: totalPages }, (_, pageNumber) => (
-          <button
-            key={pageNumber}
-            onClick={() => handlePageChange(pageNumber + 1)}
-            style={{
-              width: '30px',
-              height: '30px',
-              backgroundColor: pageNumber + 1 === currentPage ? 'darkred' : 'white',
-              color: pageNumber + 1 === currentPage ? 'white' : 'black',
-              borderRadius: '50%',
-              margin: '0.5rem',
-              display: 'flex',
-              justifyContent: 'center',
-              alignItems: 'center',
-            }}
-          >
-            {pageNumber + 1}
-          </button>
-        ))}
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "center",
+            marginTop: "1rem",
+          }}>
+          {Array.from({ length: totalPages }, (_, pageNumber) => (
+            <button
+              key={pageNumber}
+              onClick={() => handlePageChange(pageNumber + 1)}
+              style={{
+                width: "30px",
+                height: "30px",
+                backgroundColor:
+                  pageNumber + 1 === currentPage ? "darkred" : "white",
+                color: pageNumber + 1 === currentPage ? "white" : "black",
+                borderRadius: "50%",
+                margin: "0.5rem",
+                display: "flex",
+                justifyContent: "center",
+                alignItems: "center",
+              }}>
+              {pageNumber + 1}
+            </button>
+          ))}
         </div>
       </div>
     </>
