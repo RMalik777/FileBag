@@ -46,14 +46,16 @@ class PageController extends Controller
       ]);
     }
     else{
-      return Inertia::render('Login', [
-        'csrf_token' => csrf_token()
-      ]);
+      return redirect('/login');
     }
   }
   public function upload()
   {
-    return Inertia::render('Upload');
+    $category = Category::all();
+    return Inertia::render('Upload', [
+      'csrf_token' => csrf_token(),
+      'category' => $category,
+    ]);
   }
   public function login()
   {

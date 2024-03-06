@@ -101,7 +101,7 @@ export default function Index(props) {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-36 py-3 rounded-full bg-cimbred text-white placeholder-gray-100"
+                className="block w-full pl-16 pr-8 py-4 text-lg font-medium border border-gray-300 rounded-full bg-cimbred text-white placeholder-gray-100"
                 placeholder="Search"
                 name="searchword"
                 value={searchTerm}
@@ -135,30 +135,30 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {header.map((item, index) => (
+            {category.map((item, index) => (
               <tr
                 key={item.id}
                 className="border-cimbred border-x-0 border-y-2">
                 <td className="py-3">
                   <span className="duration-300 ease-out">
-                    {detail[item.id - 1].file_name}
+                    {detail[item.id - 1]?.file_name}
                   </span>
                 </td>
                 <td className="py-3 ">
                   {category[item.id - 1]?.category_name}
                 </td>
                 <td className="py-3 text-center">{item.file_date}</td>
-                <td className="py-3 text-center">{item.employee_id}</td>
-                <td className="text-center">
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                <td className="py-3 text-center">{users[item.id-1]?.username}</td>
+                <td className="text-center *:px-1 *:text-4xl">
+                  <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
                     schedule
                   </span>
                   {/* Replace with plus icon code */}
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                  <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
                     add_circle
                   </span>
                   <a href={detail[item.id-1].file_path} download>
-                    <span class="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                    <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
                       download_for_offline
                     </span>
                   </a>
@@ -182,7 +182,7 @@ export default function Index(props) {
                 width: "30px",
                 height: "30px",
                 backgroundColor:
-                  pageNumber + 1 === currentPage ? "darkred" : "white",
+                pageNumber + 1 === currentPage ? "darkred" : "white",
                 color: pageNumber + 1 === currentPage ? "white" : "black",
                 borderRadius: "50%",
                 margin: "0.5rem",

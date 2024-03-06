@@ -13,7 +13,7 @@ return new class extends Migration
     {
         Schema::create('file_headers', function (Blueprint $table) {
             $table->id();
-            $table->float('version')->unique();
+            $table->float('version');
             $table->date('file_date')->useCurrent();
             $table->foreignId('file_detail_id')->constrained();
             $table->foreignId('user_id')->constrained();
