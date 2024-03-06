@@ -16,19 +16,19 @@ class EmployeeSeeder extends Seeder
         $employees = [
             [
                 'username' => 'Rafli',
-                'password' => 'rafli123'
+                'password' => bcrypt('rafli123')
             ],
             [
                 'username' => 'Calvin',
-                'password' => 'calvin888'
+                'password' => bcrypt('calvin888')
             ],
             [
                 'username' => 'Vincent',
-                'password' => 'vincentuhuy'
+                'password' => bcrypt('vincentuhuy')
             ],
             [
                 'username' => 'Hans',
-                'password' => 'hansen'
+                'password' => bcrypt('hansen')
             ]
         ];
         DB::table('employees')->insert($employees);
