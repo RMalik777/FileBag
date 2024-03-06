@@ -78,7 +78,7 @@ export default function Navbar() {
         </div>
       </div>
       <div className="hidden max-lg:order-3 lg:flex flex-col w-fit font-bold text-white items-center py-2">
-        <p className="text-md">Calvin&nbsp;|&nbsp;<span className="font-medium">Project&nbsp;Manager</span></p>
+        <p className="text-md">{usePage().props.user_data.username}&nbsp;|&nbsp;<span className="font-medium">Project&nbsp;Manager</span></p>
       </div>
       <div className="p-5 order-2 lg:hidden">
         <span
