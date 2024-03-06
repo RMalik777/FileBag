@@ -9,7 +9,7 @@ export default function Index(fileHeader, fileDetail) {
   // console.log(detail);
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
+  const [itemsPerPage, setItemsPerPage] = useState(4); //per page nampilin 4 kolom data
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
@@ -112,10 +112,10 @@ export default function Index(fileHeader, fileDetail) {
           <tbody className="bg-white text-black">
             {header.map((item, index) =>(
               <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id]?.file_name}</span></td>
-                <td className="py-3">{item.category_id}</td>
-                <td className="py-3">{item.file_date}</td>
-                <td className="py-3">{item.employee_id}</td>
+                <td className="text-center"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id]?.file_name}</span></td>
+                <td className="text-center">{item.category_id}</td>
+                <td className="text-center">{item.file_date}</td>
+                <td className="text-center">{item.employee_id}</td>
                 <td className="text-center">
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   {/* Replace with clock icon code */}
