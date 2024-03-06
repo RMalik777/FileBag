@@ -61,14 +61,14 @@ export default function Index(props) {
         </div>
       </div>
       <div className="h-auto w-full px-8 flex flex-col">
-        <p>Choose the Following Category Below!</p>
-        <div className="flex flex-col md:flex-row justify-between md:items-center">
+        <p className="text-xl font-bold text-cimbred">Choose the Following Category Below!</p>
+        <div className="flex flex-col md:flex-row justify-between md:items-center mb-2">
           <div className="flex">
             <select
               id="category"
               name="category"
               defaultValue="category"
-              className="bg-3 font-bold rounded- text-white w-36 h-10 text-center mb-2">
+              className="bg-cimbred font-bold rounded-md text-white text-center px-5 py-3">
               <option className="hidden" selected>
                 Category
               </option>
@@ -91,51 +91,52 @@ export default function Index(props) {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-5 py-3 rounded-full bg-3 text-white placeholder-gray-200"
+                className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-36 py-3 rounded-full bg-cimbred text-white placeholder-gray-100"
                 placeholder="Search"
                 required
               />
-              <span className="material-symbols-rounded absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-200">
+              <span className="material-symbols-rounded absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
                 search
               </span>
             </div>
           </form>
         </div>
-        <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
-          <thead className="rounded-lg font-bold">
-            <tr className="border-cimbred border-x-0 border-y-2 rounded-lg">
-              <th style={{ width: '20%' }} className="py-5">File</th>
-              <th style={{ width: '20%' }} className="py-5">Category</th>
-              <th style={{ width: '20%' }} className="py-5 max-md:hidden">Date Updated</th>
-              <th style={{ width: '20%' }} className="py-5 max-md:hidden">Uploaded By</th>
-              <th style={{ width: '20%' }} className="py-5">Action</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white text-black">
-            {header.map((item, index) =>(
-              <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out"><a href="files/sample.pdf" download>{detail[item.id-1].file_name}</a></span></td>
-                <td className="py-3">{category[item.id-1]?.category_name}</td>
-                <td className="py-3">{item.file_date}</td>
-                <td className="py-3">{item.employee_id}</td>
-                <td className="text-center">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  {/* Replace with clock icon code */}
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                    schedule
-                  </span>
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  {/* Replace with plus icon code */}
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                    add_circle
-                  </span>
-                </span>
-              </td>
+          <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
+            <thead className="rounded-full font-bold">
+              <tr className="border-cimbred border-x-0 border-y-2">
+                <th style={{ width: '20%' }} className="py-5">File</th>
+                <th style={{ width: '20%' }} className="py-5">Category</th>
+                <th style={{ width: '20%' }} className="py-5 max-md:hidden">Date Updated</th>
+                <th style={{ width: '20%' }} className="py-5 max-md:hidden">Uploaded By</th>
+                <th style={{ width: '20%' }} className="py-5">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
+            </thead>
+            <tbody className="bg-white text-black">
+              {header.map((item, index) =>(
+                <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
+                  <td className="py-3"><span className="text-black hover:text-cimbred underline cursor-pointer duration-300 ease-out"><a href="files/sample.pdf" download>{detail[item.id-1].file_name}</a></span></td>
+                  <td className="py-3 ">{category[item.id-1]?.category_name}</td>
+                  <td className="py-3 text-center">{item.file_date}</td>
+                  <td className="py-3 text-center">{item.employee_id}</td>
+                  <td className="text-center">
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                    {/* Replace with clock icon code */}
+                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                      schedule
+                    </span>
+                  </span>
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                    {/* Replace with plus icon code */}
+                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                      add_circle
+                    </span>
+                  </span>
+                </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+
 
         <div style={{ display: 'flex', justifyContent: 'center', marginTop: '1rem' }}>
         {Array.from({ length: totalPages }, (_, pageNumber) => (
