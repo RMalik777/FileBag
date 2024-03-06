@@ -19,6 +19,8 @@ export default function Index(props) {
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
+  
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -95,6 +97,8 @@ export default function Index(props) {
                 type="search"
                 id="default-search"
                 className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-36 py-3 rounded-full bg-cimbred text-white placeholder-gray-100"
+                name="searchword"
+                // value="{{ Request::get('searchword') }}"
                 placeholder="Search"
                 required
               />
