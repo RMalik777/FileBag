@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
@@ -28,7 +29,22 @@ class EmployeeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Session::flash('username', $request->username);
+        Session::flash('password', $request->password);
+        $request->validate([
+            'username' => 'required',
+            'password' => 'required|numeric',
+        ],[
+            'username.required' => 'username must be filled!',
+            'password.required' => 'password must be filled!',
+            'password.numeric' => 'password must contains numerical!',
+        ]);
+        $data = [
+            'username' => $request->username,
+            'password' => $request->password,
+        ];
+        employee::create($data);
+        return redirect()->to('/')->with('successfuly login!');
     }
 
     /**
