@@ -3,16 +3,22 @@ import Navbar from "../Components/Navbar/Navbar";
 import { Head, usePage } from "@inertiajs/react";
 
 export default function Index(props) {
-  //data buat tabel
-  const header = props.fileHeader;
-  const detail = props.fileDetail;
-  const category = props.category;
-  const users = props.users;
-
+  
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
-
-  console.log(detail);
+  
+  const [searchTerm, setSearchTerm] = useState('');
+  const [searchResults, setSearchResults] = useState([]);
+  
+  //data buat tabel
+  let header = props.fileHeader;
+  let detail = props.fileDetail;
+  let category = props.category;
+  let users = props.users;
+  let result = props.show;
+  if(window.location.href.includes("?searchword=")){
+    header = result;
+  }
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
@@ -20,7 +26,6 @@ export default function Index(props) {
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
   
-
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
@@ -91,15 +96,16 @@ export default function Index(props) {
               </option>
             </select>
           </div>
-          <form className="relative w-1/3">
+          <form className="relative w-1/3" onSubmit={fetch(`/?searchword=${searchTerm}`)}>
             <div className="w-full">
               <input
                 type="search"
                 id="default-search"
                 className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-36 py-3 rounded-full bg-cimbred text-white placeholder-gray-100"
-                name="searchword"
-                // value="{{ Request::get('searchword') }}"
                 placeholder="Search"
+                name="searchword"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 required
               />
               <span className="material-symbols-rounded absolute ml-2 inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">

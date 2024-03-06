@@ -17,36 +17,32 @@ class PageController extends Controller
 {
   public function index(Request $request)
   {
-    // $searchword = $request->searchword;
-    // if(strlen($searchword)){
-    //   // $fileDetail = FileDetail::where('file_name','like','%'. $searchword .'%');
-    //   // $fileHeader = FileHeader::where('file_detail_id');
-    //   // $fileHeader = $fileDetail->fileHeader();
-    //   // if($fileDetail){
-    //   // }
-    //   // else{
-    //   //   $fileHeader = FileHeader::all();
-    //   // }
-    // }
-    // else{  
-    //   $fileDetail = FileDetail::all();
-    //   // $fileDetail = FileDetail::all();
-    //   // $category = Category::all();
-    //   // $users = User::all();
-    // }
-    // $fileHeader = FileHeader::all();
-    // $category = Category::all();
-    // $users = User::all();
+    $searchword = $request->searchword;
+    if(strlen($searchword)){
+      $fileDetail = FileDetail::where('file_name','like','%'. $searchword .'%')->get();
+      if($fileDetail){
+        $fileHeaderIds = $fileDetail->pluck('id');
+        $fileHeaderShow = FileHeader::whereIn('file_detail_id', $fileHeaderIds)->get();
+      }
+      else{
+        $fileHeaderShow = FileHeader::all()->get();
+      }
+    }
+    else{
+      $fileHeaderShow = FileHeader::all();  
+    }
     $fileHeader = FileHeader::all();
     $fileDetail = FileDetail::all();
     $category = Category::all();
-    $users = User::all();    
+    $users = User::all();
+        
     if (Auth::user()){
       return Inertia::render('Index', [
         'fileHeader' => $fileHeader,
         'fileDetail' => $fileDetail,
         'category' => $category,
         'users' => $users,
+        'show' => $fileHeaderShow
       ]);
     }
     else{
