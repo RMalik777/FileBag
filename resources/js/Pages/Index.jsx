@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import { Head } from "@inertiajs/react";
+import { Head, usePage } from "@inertiajs/react";
 
 export default function Index(props) {
   //data buat tabel

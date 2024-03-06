@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, usePage } from "@inertiajs/react";
 
-export default function Navbar(props) {
+export default function Navbar() {
+  console.log(usePage().props);
+
   const { url, component } = usePage();
   const [scrollY, setScrollY] = useState(0);
   const [nav, setNav] = useState(false);
