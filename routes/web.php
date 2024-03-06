@@ -19,4 +19,5 @@ use PhpParser\Node\Stmt\Return_;
 Route::get('/', [PageController::class, 'index']);
 Route::get('/upload', [PageController::class, 'upload']);
 Route::get('/login', [PageController::class, 'login']);
-Route::post('/login', [EmployeeController::class, 'store']);
+Route::get('/PopVersioning', [PageController::class, 'PopVersioning']);
+
