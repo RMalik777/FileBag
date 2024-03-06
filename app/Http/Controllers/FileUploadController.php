@@ -3,9 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\FileDetail;
+use App\Model\Category;
+use App\Model\Employee;
+use App\Model\FileHeader;
 use Illuminate\Http\Request;
 
-class FileDetailController extends Controller
+class FileUploadController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -20,7 +23,8 @@ class FileDetailController extends Controller
      */
     public function create()
     {
-        //
+        // $categories = Category::all();
+        // return view
     }
 
     /**
@@ -34,7 +38,7 @@ class FileDetailController extends Controller
     /**
      * Display the specified resource.
      */
-    public function show(FileDetail $fileDetail)
+    public function show(Category $category)
     {
         //
     }
@@ -42,7 +46,7 @@ class FileDetailController extends Controller
     /**
      * Show the form for editing the specified resource.
      */
-    public function edit(FileDetail $fileDetail)
+    public function edit(Category $category)
     {
         //
     }
@@ -50,7 +54,7 @@ class FileDetailController extends Controller
     /**
      * Update the specified resource in storage.
      */
-    public function update(Request $request, FileDetail $fileDetail)
+    public function update(Request $request, Category $category)
     {
         //
     }
@@ -58,7 +62,7 @@ class FileDetailController extends Controller
     /**
      * Remove the specified resource from storage.
      */
-    public function destroy(FileDetail $fileDetail)
+    public function destroy(Category $category)
     {
         //
     }
