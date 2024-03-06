@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\EmployeeController;
 use App\Http\Controllers\PageController;
 use Illuminate\Support\Facades\Route;
 use PhpParser\Node\Stmt\Return_;
@@ -18,3 +19,4 @@ use PhpParser\Node\Stmt\Return_;
 Route::get('/', [PageController::class, 'index']);
 Route::get('/upload', [PageController::class, 'upload']);
 Route::get('/login', [PageController::class, 'login']);
+Route::post('/login', [EmployeeController::class, 'store']);

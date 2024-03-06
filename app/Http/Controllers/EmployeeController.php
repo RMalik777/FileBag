@@ -4,78 +4,96 @@ namespace App\Http\Controllers;
 
 use App\Models\Employee;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Session;
 
 class EmployeeController extends Controller
 {
-    /**
-     * Display a listing of the resource.
-     */
-    public function index()
-    {
-        //
-    }
+  /**
+   * Display a listing of the resource.
+   */
+  public function index()
+  {
+    //
+  }
 
-    /**
-     * Show the form for creating a new resource.
-     */
-    public function create()
-    {
-        //
-    }
+  /**
+   * Show the form for creating a new resource.
+   */
+  public function create()
+  {
+    //
+  }
 
-    /**
-     * Store a newly created resource in storage.
-     */
-    public function store(Request $request)
-    {
-        Session::flash('username', $request->username);
-        Session::flash('password', $request->password);
-        $request->validate([
-            'username' => 'required',
-            'password' => 'required|numeric',
-        ],[
-            'username.required' => 'username must be filled!',
-            'password.required' => 'password must be filled!',
-            'password.numeric' => 'password must contains numerical!',
-        ]);
-        $data = [
-            'username' => $request->username,
-            'password' => $request->password,
-        ];
-        employee::create($data);
-        return redirect()->to('/')->with('successfuly login!');
+  /**
+   * Store a newly created resource in storage.
+   */
+  public function store(Request $request)
+  {
+    $request->validate([
+      'username' => 'required',
+      'password' => 'required',
+    ], [
+      'username.required' => 'Please Fill Username!',
+      'password.required' => 'Please Fill Password!',
+    ]);
+    $credentials = $request->validate([
+      'username' => ['required'],
+      'password' => ['required'],
+    ], [
+      'username.required' => 'Please Fill Username!',
+      'password.required' => 'Please Fill Password!',
+    ]);
+    $data = [
+      'username' => $request->username,
+      'password' => $request->password,
+    ];
+    if (Auth::attempt($credentials)) {
+      $request->session()->regenerate();
+      return redirect()->intended('/');
     }
+    // employee::create($data);
+    return back()->with('error', 'Invalid Credentials.');
+  }
+  public function logout(Request $request)
+  {
+    Auth::logout();
 
-    /**
-     * Display the specified resource.
-     */
-    public function show(Employee $employee)
-    {
-        //
-    }
+    $request->session()->invalidate();
+    $request->session()->regenerate();
 
-    /**
-     * Show the form for editing the specified resource.
-     */
-    public function edit(Employee $employee)
-    {
-        //
-    }
+    return redirect('/login')->with('success', 'Berhasil keluar.');
+  }
 
-    /**
-     * Update the specified resource in storage.
-     */
-    public function update(Request $request, Employee $employee)
-    {
-        //
-    }
+  /**
+   * Display the specified resource.
+   */
+  public function show(Employee $employee)
+  {
+    //
+  }
 
-    /**
-     * Remove the specified resource from storage.
-     */
-    public function destroy(Employee $employee)
-    {
-        //
-    }
+  /**
+   * Show the form for editing the specified resource.
+   */
+  public function edit(Employee $employee)
+  {
+    //
+  }
+
+  /**
+   * Update the specified resource in storage.
+   */
+  public function update(Request $request, Employee $employee)
+  {
+    //
+  }
+
+  /**
+   * Remove the specified resource from storage.
+   */
+  public function destroy(Employee $employee)
+  {
+    //
+  }
 }

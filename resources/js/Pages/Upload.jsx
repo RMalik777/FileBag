@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { Head } from "@inertiajs/inertia-react";
+import { Head } from "@inertiajs/react";
 import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
 
