@@ -12,6 +12,8 @@ export default function Index(props) {
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
 
+  console.log(detail);
+
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
@@ -114,7 +116,7 @@ export default function Index(props) {
           <tbody className="bg-white text-black">
             {header.map((item, index) =>(
               <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out"><a href="files/sample.pdf" download>{detail[item.id-1].file_name}</a></span></td>
+                <td className="py-3"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out"><a href={detail[item.id-1].file_path} download>{detail[item.id-1].file_name}</a></span></td>
                 <td className="py-3">{category[item.id-1]?.category_name}</td>
                 <td className="py-3">{item.file_date}</td>
                 <td className="py-3">{item.employee_id}</td>
