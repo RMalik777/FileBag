@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
+use Throwable;
 
 class PageController extends Controller
 {
@@ -53,6 +54,12 @@ class PageController extends Controller
   }
   public function login()
   {
-    return Inertia::render('Login');
+    return Inertia::render('Login', [
+      'csrf_token' => csrf_token()
+    ]);
+  }
+  public function PopVersioning()
+  {
+    return Inertia::render('PopVersioning');
   }
 }

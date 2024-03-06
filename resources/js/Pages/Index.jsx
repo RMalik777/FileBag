@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import { Head } from "@inertiajs/inertia-react";
+import { Head } from "@inertiajs/react";
 
 export default function Index(props) {
   //data buat tabel
@@ -9,10 +9,9 @@ export default function Index(props) {
   const category = props.category;
   const users = props.users;
 
+  const [fileHeaders, setFileHeaders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
-
-  console.log(detail);
+  const [itemsPerPage, setItemsPerPage] = useState(2); //per page nampilin 4 kolom data
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
@@ -24,6 +23,9 @@ export default function Index(props) {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  
+
 
   return (
     <>
@@ -67,13 +69,13 @@ export default function Index(props) {
         <p className="text-xl font-bold text-cimbred">
           Choose the Following Category Below!
         </p>
-        <div className="flex flex-col md:flex-row justify-between md:items-center mb-2">
+        <div className="flex w-full flex-col md:flex-row justify-between md:items-center mb-2">
           <div className="flex">
             <select
               id="category"
               name="category"
               defaultValue="category"
-              className="bg-cimbred font-bold rounded-md text-white text-center px-5 py-3">
+              className="bg-cimbred font-bold rounded-md text-white text-left px-2 py-3">
               <option className="hidden" selected>
                 Category
               </option>
@@ -91,7 +93,7 @@ export default function Index(props) {
               </option>
             </select>
           </div>
-          <form className="relative">
+          <form className="relative w-1/3">
             <div className="w-full">
               <input
                 type="search"
@@ -102,7 +104,7 @@ export default function Index(props) {
                 placeholder="Search"
                 required
               />
-              <span className="material-symbols-rounded absolute inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
+              <span className="material-symbols-rounded absolute ml-2 inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
                 search
               </span>
             </div>
@@ -129,28 +131,21 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {header.map((item, index) => (
-              <tr
-                key={item.id}
-                className="border-cimbred border-x-0 border-y-2">
-                <td className="py-3">
-                  <span className="duration-300 ease-out">
-                    {detail[item.id - 1].file_name}
-                  </span>
-                </td>
-                <td className="py-3 ">
-                  {category[item.id - 1]?.category_name}
-                </td>
-                <td className="py-3 text-center">{item.file_date}</td>
-                <td className="py-3 text-center">{item.employee_id}</td>
+            {header.map((item, index) =>(
+              <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
+                <td className="text-center"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id-1]?.file_name}</span></td>
+                <td className="text-center">{item.category_id}</td>
+                <td className="text-center">{item.file_date}</td>
+                <td className="text-center">{item.employee_id}</td>
                 <td className="text-center">
+                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
+                  {/* Replace with clock icon code */}
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                    {/* Replace with clock icon code */}
-                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
-                      schedule
-                    </span>
+                    schedule
                   </span>
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                </span>
+                  {/* Replace with plus icon code */}
+                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     add_circle
                   </span>
                   <a href={detail[item.id-1].file_path} download>

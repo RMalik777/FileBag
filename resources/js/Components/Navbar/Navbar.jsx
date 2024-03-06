@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
-import { Link, usePage } from "@inertiajs/inertia-react";
+import { Link, usePage } from "@inertiajs/react";
 
-export default function Navbar() {
+export default function Navbar(props) {
   const { url, component } = usePage();
   const [scrollY, setScrollY] = useState(0);
   const [nav, setNav] = useState(false);
@@ -64,7 +64,7 @@ export default function Navbar() {
             </li>
             <li className="text-gray-300 text-md font-bold py-5 px-5">
               <Link
-                href="/"
+                href="/logout"
                 className={
                   (url === "" ? "text-white" : "") +
                   " hover:text-1 hover:underline duration-200 ease-out"
