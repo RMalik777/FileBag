@@ -193,9 +193,9 @@ export default function Index() {
             {currentItems.map((item, index) =>(
               <tr key={index}>
                 <td>{item.file}</td>
-                <td>{item.category}</td>
-                <td>{item.dateUpdated}</td>
-                <td>{item.uploadedBy}</td>
+                <td className="text-center">{item.category}</td>
+                <td className="text-center">{item.dateUpdated}</td>
+                <td className="text-center">{item.uploadedBy}</td>
                 <td style={{ textAlign: 'center' }}>
                 <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   {/* Replace with clock icon code */}
