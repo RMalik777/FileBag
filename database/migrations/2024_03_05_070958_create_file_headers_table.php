@@ -15,6 +15,7 @@ return new class extends Migration
             $table->id();
             $table->float('version')->unique();
             $table->date('file_date')->useCurrent();
+            $table->foreignId('file_detail_id')->constrained();
             $table->foreignId('employee_id')->constrained();
             $table->foreignId('category_id')->constrained();
             $table->timestamps();
