@@ -148,7 +148,6 @@ export default function Index(props) {
                     schedule
                   </span>
                   {/* Replace with plus icon code */}
-                </span>
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     add_circle
                   </span>
@@ -177,7 +176,7 @@ export default function Index(props) {
                 width: "30px",
                 height: "30px",
                 backgroundColor:
-                  pageNumber + 1 === currentPage ? "darkred" : "white",
+                pageNumber + 1 === currentPage ? "darkred" : "white",
                 color: pageNumber + 1 === currentPage ? "white" : "black",
                 borderRadius: "50%",
                 margin: "0.5rem",

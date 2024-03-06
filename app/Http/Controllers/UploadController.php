@@ -9,13 +9,14 @@ class UploadController extends Controller
 {
     public function upload(Request $request)
     {
+        dd($request);
         $request->validate([
             'title' => 'required|string|max:255',
             'file' => 'required|file|mimes:pdf|max:3072',
         ]);
 
         if ($request->file('file')->isValid()) {
-            $path = $request->file('file')->storeAs(
+            $path = $request->file('file')->store(
                 'pdfs',
                 $request->file('file')->getClientOriginalName()
             );
