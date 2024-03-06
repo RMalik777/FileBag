@@ -40,7 +40,7 @@ class PageController extends Controller
     $fileHeader = FileHeader::all();
     $fileDetail = FileDetail::all();
     $category = Category::all();
-    $users = User::all();    
+    $users = User::all();
     if (Auth::user()){
       return Inertia::render('Index', [
         'fileHeader' => $fileHeader,
@@ -55,7 +55,11 @@ class PageController extends Controller
   }
   public function upload()
   {
-    return Inertia::render('Upload');
+    $category = Category::all();
+    return Inertia::render('Upload', [
+      'csrf_token' => csrf_token(),
+      'category' => $category,
+    ]);
   }
   public function login()
   {

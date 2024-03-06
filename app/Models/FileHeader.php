@@ -7,6 +7,15 @@ use Illuminate\Database\Eloquent\Model;
 
 class FileHeader extends Model
 {
+  protected $primaryKey = 'id';
+  protected $guarded = [];
+  protected $fillable = [
+    'version',
+    'file_date',
+    'file_detail_id',
+    'user_id',
+    'category_id',
+  ];
     public function user(){
         return $this->belongsToMany(User::class);
     }
