@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import { Head } from "@inertiajs/inertia-react";
+import { Head } from "@inertiajs/react";
 
 export default function Index(props) {
   //data buat tabel
@@ -9,21 +9,21 @@ export default function Index(props) {
   const category = props.category;
   const users = props.users;
 
-  const [fileHeaders, setFileHeaders] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(2); //per page nampilin 4 kolom data
+  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
+
+  console.log(detail);
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
 
+  
+
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-
-  
-
 
   return (
     <>
@@ -96,7 +96,9 @@ export default function Index(props) {
               <input
                 type="search"
                 id="default-search"
-                className="block w-full pl-16 pr-8 py-4 text-lg font-medium border border-gray-300 rounded-full bg-cimbred text-white placeholder-gray-100"
+                className="block w-full p-2 ps-16 text-lg font-medium border border-gray-300 px-36 py-3 rounded-full bg-cimbred text-white placeholder-gray-100"
+                name="searchword"
+                // value="{{ Request::get('searchword') }}"
                 placeholder="Search"
                 required
               />
@@ -127,20 +129,24 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {header.map((item, index) =>(
-              <tr key={item.id} className="border-cimbred border-x-0 border-y-2">
-                <td className="text-center"><span className="text-blue-500 hover:text-blue-600 underline cursor-pointer duration-300 ease-out">{detail[item.id-1]?.file_name}</span></td>
-                <td className="text-center">{item.category_id}</td>
-                <td className="text-center">{item.file_date}</td>
-                <td className="text-center">{item.employee_id}</td>
+            {header.map((item, index) => (
+              <tr
+                key={item.id}
+                className="border-cimbred border-x-0 border-y-2">
+                <td className="py-3">
+                  <span className="duration-300 ease-out">
+                    {detail[item.id - 1].file_name}
+                  </span>
+                </td>
+                <td className="py-3 ">
+                  {category[item.id - 1]?.category_name}
+                </td>
+                <td className="py-3 text-center">{item.file_date}</td>
+                <td className="py-3 text-center">{item.employee_id}</td>
                 <td className="text-center">
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
-                  {/* Replace with clock icon code */}
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                     schedule
                   </span>
-                </span>
-                <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
                   {/* Replace with plus icon code */}
                 </span>
                   <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred">
