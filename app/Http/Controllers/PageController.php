@@ -7,6 +7,7 @@ use App\Models\FileDetail;
 use App\Models\FileHeader;
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Inertia\Inertia;
 use Illuminate\Support\Facades\DB;
 use Illuminate\View\View;
@@ -40,13 +41,19 @@ class PageController extends Controller
     $fileDetail = FileDetail::all();
     $category = Category::all();
     $users = User::all();    
-    
-    return Inertia::render('Index', [
-      'fileHeader' => $fileHeader,
-      'fileDetail' => $fileDetail,
-      'category' => $category,
-      'users' => $users,
-    ]);
+    if (Auth::user()){
+      return Inertia::render('Index', [
+        'fileHeader' => $fileHeader,
+        'fileDetail' => $fileDetail,
+        'category' => $category,
+        'users' => $users,
+      ]);
+    }
+    else{
+      return Inertia::render('Login', [
+        'csrf_token' => csrf_token()
+      ]);
+    }
   }
   public function upload()
   {

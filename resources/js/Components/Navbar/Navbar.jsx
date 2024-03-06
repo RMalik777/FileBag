@@ -1,7 +1,9 @@
 import React, { useState, useEffect } from "react";
 import { Link, usePage } from "@inertiajs/react";
 
-export default function Navbar(props) {
+export default function Navbar() {
+  console.log(usePage().props);
+
   const { url, component } = usePage();
   const [scrollY, setScrollY] = useState(0);
   const [nav, setNav] = useState(false);
@@ -76,7 +78,7 @@ export default function Navbar(props) {
         </div>
       </div>
       <div className="hidden max-lg:order-3 lg:flex flex-col w-fit font-bold text-white items-center py-2">
-        <p className="text-md">Calvin&nbsp;|&nbsp;<span className="font-medium">Project&nbsp;Manager</span></p>
+        <p className="text-md">{usePage().props.user_data.username}&nbsp;|&nbsp;<span className="font-medium">Project&nbsp;Manager</span></p>
       </div>
       <div className="p-5 order-2 lg:hidden">
         <span
