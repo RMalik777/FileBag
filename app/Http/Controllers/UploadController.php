@@ -22,7 +22,7 @@ class UploadController extends Controller
     $tostore = $request->file('targetfile');
     $version = FileHeader::where('category_id', $targetcategory->id)->max('version');
     $nextversion = $version + 1;
-    $fileSize = $request->file('targetfile')->getSize();
+    $fileSize = $request->file('targetfile')->getSize()/1000;
     // Storage::disk('local')->put($tostore, 'Contents');
     $fileName = $request->title . '.pdf';
     $path = Storage::disk('local')->putFileAs(
@@ -33,7 +33,7 @@ class UploadController extends Controller
     $detail = FileDetail::create([
       'file_name' => $request->title,
       'file_size' => $fileSize,
-      'file_path' => "./files/$request->title.pdf",
+      'file_path' => "./storage/$request->title.pdf",
     ]);
     FileHeader::create([
       'version' => $nextversion,
@@ -42,6 +42,6 @@ class UploadController extends Controller
       'user_id' => $user->id,
       'category_id' => $targetcategory->id,
     ]);
-    return back()->with('success', 'File uploaded successfully.');
+    return back()->with(['success', 'File uploaded successfully.'],['error', 'File upload failed.']);
   }
 }
