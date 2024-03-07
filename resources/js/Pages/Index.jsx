@@ -10,11 +10,12 @@ export default function Index(props) {
   const users = props.users;
   const data = props.data;
   const result = props.show;
+  const { url, component } = usePage();
 
-  const [searchTerm, setSearchTerm] = useState('');
+  const [searchTerm, setSearchTerm] = useState("");
   // const [searchResults, setSearchResults] = useState([]);
 
-  if(window.location.href.includes("?searchword=")){
+  if (window.location.href.includes("?searchword=")) {
     header = result;
   }
 
@@ -25,8 +26,6 @@ export default function Index(props) {
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
-
-  
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -97,7 +96,9 @@ export default function Index(props) {
               </option>
             </select>
           </div>
-          <form className="relative w-1/3" onSubmit={fetch(`/?searchword=${searchTerm}`)}>
+          <form
+            className="relative w-1/3"
+            onSubmit={fetch(`/?searchword=${searchTerm}`)}>
             <div className="w-full">
               <input
                 type="search"
@@ -137,38 +138,73 @@ export default function Index(props) {
               </th>
             </tr>
           </thead>
-          <tbody className="bg-white text-black">
-            {header.map((item, index) => (
-              <tr
-                key={item.id}
-                className="border-cimbred border-x-0 border-y-2">
-                <td className="py-3">
-                  <span className="duration-300 ease-out">
-                    {data[item.id-1].file_name}
-                  </span>
-                </td>
-                <td className="py-3 ">
-                  {data[item.id-1].category_name}
-                </td>
-                <td className="py-3 text-center">{data[item.id-1].file_date}</td>
-                <td className="py-3 text-center">{data[item.id-1].username}</td>
-                <td className="text-center *:px-1 *:text-4xl">
-                  <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
-                    schedule
-                  </span>
-                  {/* Replace with plus icon code */}
-                  <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
-                    add_circle
-                  </span>
-                  <a href={data[item.id-1].file_path} download>
-                    <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
-                      download_for_offline
+          {url.startsWith("/?searchword") ? (
+            <tbody className="bg-white text-black">
+              {header.map((item, index) => (
+                <tr
+                  key={item.id}
+                  className="border-cimbred border-x-0 border-y-2">
+                  <td className="py-3">
+                    <span className="duration-300 ease-out">
+                      {data[item.id - 1]?.file_name}
                     </span>
-                  </a>
-                </td>
-              </tr>
-            ))}
-          </tbody>
+                  </td>
+                  <td className="py-3 ">{data[item.id - 1]?.category_name}</td>
+                  <td className="py-3 text-center">
+                    {data[item.id - 1]?.file_date}
+                  </td>
+                  <td className="py-3 text-center">
+                    {data[item.id - 1]?.username}
+                  </td>
+                  <td className="text-center *:px-1 *:text-4xl">
+                    <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
+                      schedule
+                    </span>
+                    {/* Replace with plus icon code */}
+                    <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
+                      add_circle
+                    </span>
+                    <a href={data[item.id - 1]?.file_path} download>
+                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
+                        download_for_offline
+                      </span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          ) : (
+            <tbody className="bg-white text-black">
+              {data.map((item, index) => (
+                <tr
+                  key={item.id}
+                  className="border-cimbred border-x-0 border-y-2">
+                  <td className="py-3">
+                    <span className="duration-300 ease-out">
+                      {item.file_name}
+                    </span>
+                  </td>
+                  <td className="py-3 ">{item.category_name}</td>
+                  <td className="py-3 text-center">{item.file_date}</td>
+                  <td className="py-3 text-center">{item.username}</td>
+                  <td className="text-center *:px-1 *:text-4xl">
+                    <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
+                      schedule
+                    </span>
+                    {/* Replace with plus icon code */}
+                    <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
+                      add_circle
+                    </span>
+                    <a href={item.file_path} download>
+                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
+                        download_for_offline
+                      </span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          )}
         </table>
 
         <div
@@ -185,7 +221,7 @@ export default function Index(props) {
                 width: "30px",
                 height: "30px",
                 backgroundColor:
-                pageNumber + 1 === currentPage ? "darkred" : "white",
+                  pageNumber + 1 === currentPage ? "darkred" : "white",
                 color: pageNumber + 1 === currentPage ? "white" : "black",
                 borderRadius: "50%",
                 margin: "0.5rem",
@@ -193,7 +229,7 @@ export default function Index(props) {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              {pageNumber + 1} 
+              {pageNumber + 1}
             </button>
           ))}
         </div>

@@ -25,7 +25,7 @@ class PageController extends Controller
         $fileHeaderIds = $fileDetail->pluck('id');
         $fileHeaderShow = FileHeader::whereIn('file_detail_id', $fileHeaderIds)->get();
       } else {
-        $fileHeaderShow = FileHeader::all()->get();
+        $fileHeaderShow = FileHeader::all();
       }
     } else {
       $fileHeaderShow = FileHeader::all();
@@ -62,6 +62,10 @@ class PageController extends Controller
       'csrf_token' => csrf_token(),
       'category' => $category,
     ]);
+  }
+  public function update()
+  {
+    return Inertia::render('Update');
   }
   public function login()
   {
