@@ -88,7 +88,7 @@ export default function Upload(props, { csrf_token }) {
                 </h1>
                 <label
                   htmlFor="title"
-                  className="text-2xl text-black font-bold">
+                  className="text-2xl text-black font-bold pb-2">
                   Title <span className="text-red-600">*</span>
                 </label>
                 <input
@@ -98,7 +98,7 @@ export default function Upload(props, { csrf_token }) {
                 />
                 <label
                   htmlFor="category"
-                  className="text-2xl text-black font-bold">
+                  className="text-2xl text-black font-bold pb-2">
                   Category <span className="text-red-600">*</span>
                 </label>
                 <select
