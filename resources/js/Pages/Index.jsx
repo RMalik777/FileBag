@@ -4,11 +4,19 @@ import { Head, usePage } from "@inertiajs/react";
 
 export default function Index(props) {
   //data buat tabel
-  const header = props.fileHeader;
+  let header = props.fileHeader;
   const detail = props.fileDetail;
   const category = props.category;
   const users = props.users;
   const data = props.data;
+  const result = props.show;
+
+  const [searchTerm, setSearchTerm] = useState('');
+  // const [searchResults, setSearchResults] = useState([]);
+
+  if(window.location.href.includes("?searchword=")){
+    header = result;
+  }
 
   const [currentPage, setCurrentPage] = useState(1);
   const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
@@ -89,14 +97,17 @@ export default function Index(props) {
               </option>
             </select>
           </div>
-          <form className="relative w-1/3">
+          <form className="relative w-1/3" onSubmit={fetch(`/?searchword=${searchTerm}`)}>
             <div className="w-full">
               <input
                 type="search"
                 id="default-search"
                 className="block w-full pl-16 pr-8 py-4 text-lg font-medium border border-gray-300 rounded-full bg-cimbred text-white placeholder-gray-100"
-                name="searchword"
+                // name="searchword"
                 // value="{{ Request::get('searchword') }}"
+                name="searchword"
+                value={searchTerm}
+                onChange={(e) => setSearchTerm(e.target.value)}
                 placeholder="Search"
                 required
               />
@@ -127,20 +138,20 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {data.map((item, index) => (
+            {header.map((item, index) => (
               <tr
                 key={item.id}
                 className="border-cimbred border-x-0 border-y-2">
                 <td className="py-3">
                   <span className="duration-300 ease-out">
-                    {item.file_name}
+                    {data[item.id-1].file_name}
                   </span>
                 </td>
                 <td className="py-3 ">
-                  {item.category_name}
+                  {data[item.id-1].category_name}
                 </td>
-                <td className="py-3 text-center">{item.file_date}</td>
-                <td className="py-3 text-center">{item.username}</td>
+                <td className="py-3 text-center">{data[item.id-1].file_date}</td>
+                <td className="py-3 text-center">{data[item.id-1].username}</td>
                 <td className="text-center *:px-1 *:text-4xl">
                   <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
                     schedule
@@ -149,7 +160,7 @@ export default function Index(props) {
                   <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
                     add_circle
                   </span>
-                  <a href={item.file_path} download>
+                  <a href={data[item.id-1].file_path} download>
                     <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
                       download_for_offline
                     </span>
