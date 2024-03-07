@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Head, usePage } from "@inertiajs/react";
 import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
@@ -62,7 +62,6 @@ export default function Upload(props, { csrf_token }) {
   };
 
   const [showPopup, setShowPopup] = useState(false);
-
   const handleUploadClick = () => {
     if (!document.querySelector(".form-input").value.trim()) {
       alert("Please input a title for the document!");
@@ -78,7 +77,7 @@ export default function Upload(props, { csrf_token }) {
       <Head title="Upload | Filebag" />
       <Navbar />
       <form action="/upload" method="POST" encType="multipart/form-data">
-        <div className="flex flex-col w-full h-screen bg-white pt-12">
+        <div className="flex flex-col max-lg:pt-32 w-full h-screen bg-white pt-12">
           <main className="flex flex-auto flex-col items-center">
             <div className="flex flex-col lg:flex-row w-full justify-between items-center h-auto lg:h-full px-32">
               <input type="hidden" name="_token" value={props.csrf_token} />
@@ -158,7 +157,7 @@ export default function Upload(props, { csrf_token }) {
                 </p>
               </div>
             </div>
-                <p>{usePage().props.flash.success}</p>
+            <p>{usePage().props.flash.success}</p>
           </main>
 
           <footer className="w-full flex justify-between items-center mb-12 px-32 p-2 bg-white">
@@ -173,9 +172,9 @@ export default function Upload(props, { csrf_token }) {
           </footer>
 
           <Popup
-            trigger={buttonPopup}
+            trigger={usePage().props.flash.success? true : buttonPopup}
             setTrigger={setButtonPopup}
-            status={status}
+            status={usePage().props.flash.success? "success" : status}
           />
         </div>
       </form>
