@@ -83,7 +83,7 @@ export default function Index(props) {
         <p className="text-xl font-bold text-cimbred">
           Choose the Following Category Below!
         </p>
-        <div className="flex w-full flex-col md:flex-row justify-between md:items-center mb-2">
+        <div className="flex w-full flex-col md:flex-row justify-between md:items-center mb-2 max-md:gap-4">
           <div className="flex">
             <select
               id="category"

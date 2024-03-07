@@ -93,7 +93,7 @@ export default function Navbar() {
             (nav ? "w-full sm:w-1/3" : "w-0 shadow-none")
           }>
           <span
-            className="material-symbols-rounded closebtn w-auto p-4 absolute top-0 right-0 px-3 pd:px-6 lg:px-12 xl:px-14 duration-300 ease-out text-6xl text-white hover:text-black"
+            className="material-symbols-rounded closebtn w-auto p-4 absolute top-0 right-0 px-4 pd:px-6 lg:px-12 xl:px-14 duration-300 ease-out text-6xl text-white hover:text-black"
             onClick={showNav}
             src=""
             alt="Close Button">
@@ -103,10 +103,10 @@ export default function Navbar() {
             <Link href="/">Home</Link>
           </li>
           <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear hover:underline ">
-            <Link href="/Update">Update</Link>
+            <Link href="/Upload">Upload</Link>
           </li>
           <li className="list-none text-right w-full p-4 pr-6 sm:pl-11 text-2xl text-white font-medium inline-block md:block duration-200 ease-linear hover:underline ">
-            <Link href="/">Logout</Link>
+            <Link href="/Logout">Logout</Link>
           </li>
         </ul>
       </nav>
