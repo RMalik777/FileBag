@@ -83,7 +83,7 @@ export default function PopVersioning(props) {
         </table>
 
         {/* Add pagination controls here (refer to Index.jsx for styling) */}
-        {/* <div className="flex justify-center items-center absolute bottom-3 w-full px-4">
+        <div className="flex justify-center items-center absolute bottom-0 w-full px-4">
           {Math.ceil(versionHistoryData.length / itemsPerPage) > 1 && (
             <>
               {Array(Math.ceil(versionHistoryData.length / itemsPerPage))
@@ -102,7 +102,7 @@ export default function PopVersioning(props) {
                 ))}
             </>
           )}
-        </div> */}
+        </div>
       </div>
     </div>
   )
