@@ -32,7 +32,7 @@ export default function Navbar() {
       }>
       <div className="max-lg:hidden w-full flex flex-row gap-2 items-center justify-start">
         <img
-          src="assets/logox.svg"
+          src="/assets/logox.svg"
           alt="Filebag logo"
           className="w-1/5 max-xl:hidden pb-3"
         />

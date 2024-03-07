@@ -21,7 +21,7 @@ export default function Index(props) {
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(2); //per page mau nampilin brp kolom (disesuaiin)
+  const [itemsPerPage, setItemsPerPage] = useState(10); //per page mau nampilin brp kolom (disesuaiin)
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
@@ -49,11 +49,8 @@ export default function Index(props) {
           <div className="px-12 flex flex-col gap-8 md:flex-row md:gap-0 justify-between">
             <div className="flex flex-col">
               <h1 className="text-4xl lg:text-5xl text-white pb-3 font-bold">
-                Project SOP Files
+                SOP Files Management
               </h1>
-              <h2 className="text-xl lg:text-xl text-white">
-                *Maximum 3MB File Size in PDF Format
-              </h2>
             </div>
             <div>
               <a href="/upload" className="">
@@ -174,16 +171,29 @@ export default function Index(props) {
                     {data[item.id - 1]?.username}
                   </td>
                   <td className="text-center *:px-1 *:text-4xl">
-                    <span
-                      className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
-                      onClick={togglePopup}
-                      data={{ itemId: item.id }}>
-                      schedule
-                    </span>
+                  <Link
+                    href={`/${item.id}/version`}
+                    trigger={true}
+                    setTrigger={setIsPopOpen}
+                    className="*:px-1 *:text-4xl">
+                      <span
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        onClick={togglePopup}>
+                        schedule
+                      </span>
+                    </Link>
                     {/* Replace with plus icon code */}
-                    <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
-                      add_circle
-                    </span>
+                    <Link
+                    href={`/${item.id}/version`}
+                    trigger={true}
+                    setTrigger={setIsPopOpen}
+                    className="*:px-1 *:text-4xl">
+                      <span
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        onClick={togglePopup}>
+                        add_circle
+                      </span>
+                    </Link>
                     <a href={data[item.id - 1]?.file_path} download>
                       <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
                         download_for_offline
@@ -209,7 +219,7 @@ export default function Index(props) {
                   <td className="py-3 text-center max-md:hidden">{item.username}</td>
                   <td className="flex flex-col sm:flex-row items-center justify-center text-center *:px-1 *:text-4xl">
                     <Link
-                    href={`/version/${item.id}`}
+                    href={`/${item.id}/version`}
                     trigger={true}
                     setTrigger={setIsPopOpen}
                     className="*:px-1 *:text-4xl">
@@ -220,9 +230,17 @@ export default function Index(props) {
                       </span>
                     </Link>
                     {/* Replace with plus icon code */}
-                    <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
-                      add_circle
-                    </span>
+                    <Link
+                    href={`/${item.id}/update`}
+                    trigger={true}
+                    setTrigger={setIsPopOpen}
+                    className="*:px-1 *:text-4xl">
+                      <span
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        onClick={togglePopup}>
+                        add_circle
+                      </span>
+                    </Link>
                     <a href={item.file_path} download>
                       <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
                         download_for_offline
