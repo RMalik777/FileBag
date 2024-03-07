@@ -2,33 +2,37 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Category;
+use App\Models\FileDetail;
 use Illuminate\Http\Request;
-use App\Models\File;
+use App\Models\FileHeader;
 
 class UploadController extends Controller
 {
     public function upload(Request $request)
     {
         $request->validate([
-            'title' => 'required|string|max:255',
-            'file' => 'required|file|mimes:pdf|max:3072',
+            'title' => 'required',
+            'category' => 'required',
+            'targetfile' => 'required',
         ]);
-
-        if ($request->file('file')->isValid()) {
-            $path = $request->file('file')->storeAs(
-                'pdfs',
-                $request->file('file')->getClientOriginalName()
-            );
-
-            File::create([
-                'title' => $request->input('title'),
-                'file_name' => $request->file('file')->getClientOriginalName(),
-            ]);
-
-            return redirect()->back()->with('success', 'File uploaded and saved successfully.');
-        } else {
-
-            return redirect()->back()->withErrors(['file' => 'File upload failed.']);
-        }
+        $user = $request->user();
+        $targetcategory = Category::find($request->category);
+        $version = FileHeader::where('category_id', $targetcategory->id)->max('version');
+        $nextversion = $version + 1;
+        $fileSize = $request->file('targetfile')->getSize();
+        $detail = FileDetail::create([
+          'file_name' => $request->title,
+          'file_size' => $fileSize,
+          'file_path' => "./files/$request->title",
+        ]);
+        FileHeader::create([
+          'version' => $nextversion,
+          'file_date' => now(),
+          'file_detail_id' => $detail->id,
+          'user_id' => $user->id,
+          'category_id' => $targetcategory->id,
+        ]);
+        return back()->with('success', 'File uploaded successfully.');
     }
 }
