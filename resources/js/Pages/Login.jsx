@@ -81,15 +81,6 @@ export default function Login({ csrf_token }) {
                 />
               </div>
               <div className="mb-4 flex items-center">
-                <input
-                  type="checkbox"
-                  id="rememberMe"
-                  name="rememberMe"
-                  className="rounded-full cursor-pointer mr-2"
-                />
-                <label htmlFor="rememberMe" className="text-white">
-                  Remember me
-                </label>
               </div>
               <button
                 type="submit"
