@@ -24,7 +24,7 @@ class UploadController extends Controller
         $detail = FileDetail::create([
           'file_name' => $request->title,
           'file_size' => $fileSize,
-          'file_path' => "./files/$request->title",
+          'file_path' => "./files/$request->title.pdf",
         ]);
         FileHeader::create([
           'version' => $nextversion,
