@@ -18,9 +18,11 @@ use PhpParser\Node\Stmt\Return_;
 */
 
 Route::get('/', [PageController::class, 'index']);
+Route::get('/update', [PageController::class, 'update']);
+Route::post('/update', [PageController::class, 'update']);
 Route::get('/upload', [PageController::class, 'upload']);
 Route::post('/upload', [UploadController::class, 'upload']);
 Route::get('/login', [PageController::class, 'login']);
 Route::post('/login', [UserLoginController::class, 'store']);
-Route::get('/PopVersioning', [PageController::class, 'PopVersioning']);
+Route::get('/version/{id}', [PageController::class, 'PopVersioning']);
 Route::get('/logout', [UserloginController::class, 'logout']);

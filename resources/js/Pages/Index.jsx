@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
-import PopVersioning from "../Components/Popup/PopVersioning";
-import { Head, usePage } from "@inertiajs/react";
+import PopVersioning from "./PopVersioning";
+import { Head, usePage, Link } from "@inertiajs/react";
 
 export default function Index(props) {
   //data buat tabel
@@ -166,10 +166,12 @@ export default function Index(props) {
                     {data[item.id - 1]?.username}
                   </td>
                   <td className="text-center *:px-1 *:text-4xl">
-                  <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
-                  onClick={togglePopup}>
-                    schedule
-                  </span>
+                    <span
+                      className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                      onClick={togglePopup}
+                      data={{ itemId: item.id }}>
+                      schedule
+                    </span>
                     {/* Replace with plus icon code */}
                     <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
                       add_circle
@@ -198,10 +200,17 @@ export default function Index(props) {
                   <td className="py-3 text-center">{item.file_date}</td>
                   <td className="py-3 text-center">{item.username}</td>
                   <td className="text-center *:px-1 *:text-4xl">
-                    <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
-                    onClick={togglePopup}>
-                      schedule
-                    </span>
+                    <Link
+                    href={`/version/${item.id}`}
+                    trigger={true}
+                    setTrigger={setIsPopOpen}
+                    className="*:px-1 *:text-4xl">
+                      <span
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        onClick={togglePopup}>
+                        schedule
+                      </span>
+                    </Link>
                     {/* Replace with plus icon code */}
                     <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
                       add_circle
@@ -232,7 +241,7 @@ export default function Index(props) {
                 width: "30px",
                 height: "30px",
                 backgroundColor:
-                pageNumber + 1 === currentPage ? "darkred" : "white",
+                  pageNumber + 1 === currentPage ? "darkred" : "white",
                 color: pageNumber + 1 === currentPage ? "white" : "black",
                 borderRadius: "50%",
                 margin: "0.5rem",
@@ -244,10 +253,6 @@ export default function Index(props) {
             </button>
           ))}
         </div>
-        {isPopOpen && (
-            <PopVersioning trigger={true} fileName="PopVersioning"
-            setTrigger = {setIsPopOpen} />
-         )}
       </div>
     </>
   );
