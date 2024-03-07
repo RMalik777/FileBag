@@ -40,7 +40,6 @@ export default function Index(props) {
   const togglePopup = () => {
     setIsPopOpen(!isPopOpen);
   };
-
   return (
     <>
       <Head title="Dashboard | Filebag" />

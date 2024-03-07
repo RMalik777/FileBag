@@ -58,18 +58,26 @@ class PageController extends Controller
   public function upload()
   {
     $category = Category::all();
-    return Inertia::render('Upload', [
-      'csrf_token' => csrf_token(),
-      'category' => $category,
-    ]);
+    if (Auth::user()) {
+      return Inertia::render('Upload', [
+        'csrf_token' => csrf_token(),
+        'category' => $category,
+      ]);
+    } else {
+      return redirect('/login');
+    }
   }
   public function update()
   {
     $category = Category::all();
-    return Inertia::render('Update', [
-      'csrf_token' => csrf_token(),
-      'category' => $category,
-    ]);
+    if (Auth::user()) {
+      return Inertia::render('Update', [
+        'csrf_token' => csrf_token(),
+        'category' => $category,
+      ]);
+    } else {
+      return redirect('/login');
+    }
   }
   public function login()
   {
@@ -87,7 +95,7 @@ class PageController extends Controller
     // Fetch version history data
     // Adjust this query based on how your database is structured and what data you need
     $result = DB::table('file_headers')
-    ->select('file_headers.file_date', 'file_headers.version', 'file_headers.user_id')
+    ->select('file_headers.file_date', 'file_headers.version', 'file_headers.user_id', 'file_details.file_path')
     ->join('file_details', 'file_headers.file_detail_id', '=', 'file_details.id')
     ->where('file_headers.category_id', '=', $categoryid)
     ->orderBy('file_headers.version', 'desc')

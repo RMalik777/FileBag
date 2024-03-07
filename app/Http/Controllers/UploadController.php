@@ -16,6 +16,10 @@ class UploadController extends Controller
       'title' => 'required',
       'category' => 'required',
       'targetfile' => 'required',
+    ], [
+      'title.required' => 'Please enter the title.',
+      'category.required' => 'Please select the category.',
+      'targetfile.required' => 'Please select the file.',
     ]);
     $user = $request->user();
     $targetcategory = Category::find($request->category);
@@ -23,6 +27,12 @@ class UploadController extends Controller
     $version = FileHeader::where('category_id', $targetcategory->id)->max('version');
     $nextversion = $version + 1;
     $fileSize = $request->file('targetfile')->getSize()/1000;
+    if($fileSize > 3072){
+      return back()->with('error', 'File size is too large.');
+    }
+    if($tostore->getClientOriginalExtension() != 'pdf'){
+      return back()->with('error', 'File type is not supported.');
+    }
     // Storage::disk('local')->put($tostore, 'Contents');
     $fileName = $request->title . '.pdf';
     $path = Storage::disk('local')->putFileAs(
@@ -42,6 +52,6 @@ class UploadController extends Controller
       'user_id' => $user->id,
       'category_id' => $targetcategory->id,
     ]);
-    return back()->with(['success', 'File uploaded successfully.'],['error', 'File upload failed.']);
+    return back()->with('success', 'File uploaded successfully.');
   }
 }

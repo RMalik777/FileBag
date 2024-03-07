@@ -79,10 +79,10 @@ export default function Upload(props, { csrf_token }) {
       <form action="/upload" method="POST" encType="multipart/form-data">
         <div className="flex flex-col max-lg:pt-32 w-full h-screen bg-white pt-12">
           <main className="flex flex-auto flex-col items-center">
-            <div className="flex flex-col lg:flex-row w-full justify-between items-center h-auto lg:h-full px-32">
+            <div className="flex flex-col gap-4 lg:gap-10 lg:flex-row w-full justify-between items-center h-auto lg:h-full px-32">
               <input type="hidden" name="_token" value={props.csrf_token} />
               <div className="flex flex-col justify-between">
-                <h1>
+                <h1 className="text-xl mb-8">
                   Input document title and category, then drag file to the
                   provided area.
                 </h1>
@@ -157,7 +157,6 @@ export default function Upload(props, { csrf_token }) {
                 </p>
               </div>
             </div>
-            <p>{usePage().props.flash.success}</p>
           </main>
 
           <footer className="w-full flex justify-between items-center mb-12 px-32 p-2 bg-white">
@@ -172,9 +171,15 @@ export default function Upload(props, { csrf_token }) {
           </footer>
 
           <Popup
-            trigger={usePage().props.flash.success? true : buttonPopup}
+            trigger={
+              usePage().props.flash.success
+                ? true
+                : usePage().props.flash.error
+                ? true
+                : buttonPopup
+            }
             setTrigger={setButtonPopup}
-            status={usePage().props.flash.success? "success" : status}
+            status={usePage().props.flash.success ? true : false}
           />
         </div>
       </form>
