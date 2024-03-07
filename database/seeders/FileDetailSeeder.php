@@ -17,22 +17,22 @@ class FileDetailSeeder extends Seeder
             [
                 'file_name' => 'SOP_Management_2024',
                 'file_size' => 2.2,
-                'file_path' => './files/SOP MANAGEMENT.pdf'
+                'file_path' => './storage/SOP MANAGEMENT.pdf'
             ],
             [
                 'file_name' => 'SOP_IT_2024',
                 'file_size' => 1.5,
-                'file_path' => './files/SOP IT.pdf'
+                'file_path' => './storage/SOP IT.pdf'
             ],
             [
                 'file_name' => 'SOP_HR_2024',
                 'file_size' => 0.5,
-                'file_path' => './files/HR.pdf'
+                'file_path' => './storage/SOP HR.pdf'
             ],
             [
                 'file_name' => 'SOP_LnT_2024',
                 'file_size' => 1.2,
-                'file_path' => './files/LND.pdf'
+                'file_path' => './storage/SOP LND.pdf'
             ]
         ];
         DB::table('file_details')->insert($file_details);

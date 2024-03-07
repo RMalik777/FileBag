@@ -6,6 +6,7 @@ use App\Models\Category;
 use App\Models\FileDetail;
 use Illuminate\Http\Request;
 use App\Models\FileHeader;
+use Illuminate\Support\Facades\Storage;
 
 class UploadController extends Controller
 {
@@ -18,9 +19,17 @@ class UploadController extends Controller
     ]);
     $user = $request->user();
     $targetcategory = Category::find($request->category);
+    $tostore = $request->file('targetfile');
     $version = FileHeader::where('category_id', $targetcategory->id)->max('version');
     $nextversion = $version + 1;
     $fileSize = $request->file('targetfile')->getSize();
+    // Storage::disk('local')->put($tostore, 'Contents');
+    $fileName = $request->title . '.pdf';
+    $path = Storage::disk('local')->putFileAs(
+      'public', // This is the directory under 'storage/app'
+      $request->file('targetfile'),
+      $fileName
+    );
     $detail = FileDetail::create([
       'file_name' => $request->title,
       'file_size' => $fileSize,
