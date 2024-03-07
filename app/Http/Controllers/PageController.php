@@ -34,8 +34,8 @@ class PageController extends Controller
     $fileDetail = FileDetail::all();
     $category = Category::all();
     $users = User::all();
-    $data = DB::table(DB::raw('(SELECT fh.*, ROW_NUMBER() OVER (PARTITION BY fh.category_id ORDER BY fh.version DESC) AS rn FROM file_headers fh) as rc'))
-      ->select('rc.id', 'rc.version', 'rc.file_date', 'rc.category_id', 'rc.user_id', 'u.username', 'c.category_name', 'fd.file_name')
+    $data = $result = DB::table(DB::raw('(SELECT fh.*, ROW_NUMBER() OVER (PARTITION BY fh.category_id ORDER BY fh.version DESC) AS rn FROM file_headers fh) as rc'))
+      ->select('rc.id', 'rc.version', 'rc.file_date', 'rc.category_id', 'rc.user_id', 'u.username', 'c.category_name', 'fd.file_name', 'fd.file_path')
       ->join('categories as c', 'rc.category_id', '=', 'c.id')
       ->join('file_details as fd', 'rc.file_detail_id', '=', 'fd.id')
       ->join('users as u', 'rc.user_id', '=', 'u.id')

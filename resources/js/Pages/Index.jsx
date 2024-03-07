@@ -149,7 +149,7 @@ export default function Index(props) {
                   <span className="material-symbols-rounded  hover:material-fill hover:text-cimbred cursor-pointer">
                     add_circle
                   </span>
-                  <a href={detail[item.id-1].file_path} download>
+                  <a href={item.file_path} download>
                     <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
                       download_for_offline
                     </span>
@@ -182,7 +182,7 @@ export default function Index(props) {
                 justifyContent: "center",
                 alignItems: "center",
               }}>
-              {pageNumber + 1}
+              {pageNumber + 1} 
             </button>
           ))}
         </div>
