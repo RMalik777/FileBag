@@ -21,12 +21,14 @@ export default function Index(props) {
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
+  const [itemsPerPage, setItemsPerPage] = useState(2); //per page mau nampilin brp kolom (disesuaiin)
 
   const totalPages = Math.ceil(header.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+
+  const slicedData = data.slice(indexOfFirstItem, indexOfLastItem);
 
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
@@ -149,7 +151,7 @@ export default function Index(props) {
           </thead>
           {url.startsWith("/?searchword") ? (
             <tbody className="bg-white text-black">
-              {header.map((item, index) => (
+              {slicedData.map((item, index) => (
                 <tr
                   key={item.id}
                   className="border-cimbred border-x-0 border-y-2">
@@ -187,7 +189,7 @@ export default function Index(props) {
             </tbody>
           ) : (
             <tbody className="bg-white text-black">
-              {data.map((item, index) => (
+              {slicedData.map((item, index) => (
                 <tr
                   key={item.id}
                   className="border-cimbred border-x-0 border-y-2">
