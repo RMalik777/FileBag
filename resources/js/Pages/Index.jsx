@@ -1,3 +1,5 @@
+//note: pas merge hati2 ya ges :(
+
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
 import PopVersioning from "./PopVersioning";
@@ -21,9 +23,9 @@ export default function Index(props) {
   }
 
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
+  const [itemsPerPage, setItemsPerPage] = useState(2); //per page mau nampilin brp kolom (disesuaiin)
 
-  const totalPages = Math.ceil(header.length / itemsPerPage);
+  const totalPages = Math.ceil(data.length / itemsPerPage);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -187,7 +189,7 @@ export default function Index(props) {
             </tbody>
           ) : (
             <tbody className="bg-white text-black">
-              {data.map((item, index) => (
+              {data.slice(indexOfFirstItem, indexOfLastItem).map((item, index) => (
                 <tr
                   key={item.id}
                   className="border-cimbred border-x-0 border-y-2">
