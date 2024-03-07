@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import { Head, usePage, Link } from "@inertiajs/react";
 
 export default function PopVersioning(props) {
   const result = props.result;
@@ -44,66 +45,68 @@ export default function PopVersioning(props) {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
-  console.log(props);
+  console.log(result);
 
   return (
-    <div className="w-full min-h-screen h-full bg-black bg-opacity-20 flex justify-center items-center">
-      <div className="relative flex flex-col p-10 w-full h-3/4 max-w-screen-xl bg-white text-center rounded-lg">
-        <a href="/">
-          <button className="absolute top-4 right-4 bg-transparent border-none">
-            <img src="../../../assets/x.png" width="20px" alt="Close Button" />
-          </button>
-        </a>
-        <h1 className="text-2xl font-bold pb-5">Version History</h1>
-        <table>
-          <thead className="bg-3">
-            <tr className="text-white text-md">
-              <th className="py-5">Version</th>
-              <th className="py-5">Upload Date</th>
-              <th className="py-5">Upload By</th>
-              <th className="py-5">Action</th>
-            </tr>
-          </thead>
-          <tbody className="bg-white text-black">
-            {result.map((item, index) => (
-              <tr key={index} className="border-x-0 border-y-2">
-                <td className="p-5">{item.version}</td>
-                <td className="p-5">{item.file_date}</td>
-                <td className="p-5">{item.user_id}</td>
-                <td className="p-5">
-                  <a href={item.file_path} download>
-                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
-                      download_for_offline
-                    </span>
-                  </a>
-                </td>
+  <>
+      <Head title="Version History | Filebag" />
+      <div className="w-full min-h-screen h-full bg-black bg-opacity-20 flex justify-center items-center">
+        <div className="relative flex flex-col p-10 w-full h-3/4 max-w-screen-xl bg-white text-center rounded-lg">
+          <Link href="/">
+            <button className="absolute top-4 right-4 bg-transparent border-none">
+              <img src="../../../assets/x.png" width="20px" alt="Close Button" />
+            </button>
+          </Link>
+          <h1 className="text-2xl font-bold pb-5">Version History</h1>
+          <table>
+            <thead className="bg-3">
+              <tr className="text-white text-md">
+                <th className="py-5">Version</th>
+                <th className="py-5">Upload Date</th>
+                <th className="py-5">Upload By</th>
+                <th className="py-5">Action</th>
               </tr>
-            ))}
-          </tbody>
-        </table>
-
-        {/* Add pagination controls here (refer to Index.jsx for styling) */}
-        {/* <div className="flex justify-center items-center absolute bottom-0 w-full px-4">
-          {Math.ceil(versionHistoryData.length / itemsPerPage) > 1 && (
-            <>
-              {Array(Math.ceil(versionHistoryData.length / itemsPerPage))
-                .fill(null)
-                .map((_, pageNumber) => (
-                  <button
-                    key={pageNumber + 1}
-                    className={`px-3 py-2 rounded-md text-sm font-medium mx-1 ${
-                      currentPage === pageNumber + 1
-                        ? "bg-cimbred text-white hover:bg-cimbred-hover"
-                        : "bg-gray-200 text-gray-700 hover:bg-gray-300"
-                    }`}
-                    onClick={() => handlePageChange(pageNumber + 1)}>
-                    {pageNumber + 1}
-                  </button>
-                ))}
-            </>
-          )}
-        </div> */}
+            </thead>
+            <tbody className="bg-white text-black">
+              {result.map((item, index) => (
+                <tr key={index} className="border-x-0 border-y-2">
+                  <td className="p-5">{item.version}</td>
+                  <td className="p-5">{item.file_date}</td>
+                  <td className="p-5">{item.user_id}</td>
+                  <td className="p-5">
+                  <a href={`/${item.file_path}`} download>
+                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
+                        download_for_offline
+                      </span>
+                    </a>
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+          {/* Add pagination controls here (refer to Index.jsx for styling) */}
+          {/* <div className="flex justify-center items-center absolute bottom-0 w-full px-4">
+            {Math.ceil(versionHistoryData.length / itemsPerPage) > 1 && (
+              <>
+                {Array(Math.ceil(versionHistoryData.length / itemsPerPage))
+                  .fill(null)
+                  .map((_, pageNumber) => (
+                    <button
+                      key={pageNumber + 1}
+                      className={`px-3 py-2 rounded-md text-sm font-medium mx-1 ${
+                        currentPage === pageNumber + 1
+                          ? "bg-cimbred text-white hover:bg-cimbred-hover"
+                          : "bg-gray-200 text-gray-700 hover:bg-gray-300"
+                      }`}
+                      onClick={() => handlePageChange(pageNumber + 1)}>
+                      {pageNumber + 1}
+                    </button>
+                  ))}
+              </>
+            )}
+          </div> */}
+        </div>
       </div>
-    </div>
+  </>
   );
 }
