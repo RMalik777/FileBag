@@ -83,7 +83,7 @@ export default function Index(props) {
         <p className="text-xl font-bold text-cimbred">
           Choose the Following Category Below!
         </p>
-        <div className="flex w-full flex-col md:flex-row justify-between md:items-center mb-2">
+        <div className="flex w-full flex-col md:flex-row justify-between md:items-center mb-2 max-md:gap-4">
           <div className="flex">
             <select
               id="category"
@@ -107,27 +107,34 @@ export default function Index(props) {
               </option>
             </select>
           </div>
-          <form
-            className="relative w-1/3"
-            onSubmit={fetch(`/?searchword=${searchTerm}`)}>
-            <div className="w-full">
-              <input
-                type="search"
-                id="default-search"
-                className="block w-full pl-16 pr-8 py-4 text-lg font-medium border border-gray-300 rounded-full bg-cimbred text-white placeholder-gray-100"
-                // name="searchword"
-                // value="{{ Request::get('searchword') }}"
-                name="searchword"
-                value={searchTerm}
-                onChange={(e) => setSearchTerm(e.target.value)}
-                placeholder="Search"
-                required
-              />
-              <span className="material-symbols-rounded absolute ml-2 inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
-                search
-              </span>
-            </div>
-          </form>
+          <div className="flex flex-row gap-4">
+            <form
+              className="relative w-full"
+              onSubmit={fetch(`/?searchword=${searchTerm}`)}>
+              <div className="w-full">
+                <input
+                  type="search"
+                  id="default-search"
+                  className="block w-full pl-16 pr-8 py-4 text-lg font-medium border border-gray-300 rounded-full bg-cimbred text-white placeholder-gray-100"
+                  // name="searchword"
+                  // value="{{ Request::get('searchword') }}"
+                  name="searchword"
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  placeholder="Search"
+                  required
+                />
+                <span className="material-symbols-rounded absolute ml-2 inset-y-0 start-0 flex items-center ps-5 pointer-events-none text-gray-100">
+                  search
+                </span>
+              </div>
+            </form>
+            <Link href="/" className="">
+            <button className="bg-cimbred h-full px-8 py-4 rounded-full text-white font-medium">
+              Clear
+              </button>
+              </Link>
+          </div>
         </div>
         <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
           <thead className="rounded-full font-bold">
@@ -161,10 +168,10 @@ export default function Index(props) {
                     </span>
                   </td>
                   <td className="py-3 ">{data[item.id - 1]?.category_name}</td>
-                  <td className="py-3 text-center">
+                  <td className="py-3 text-center max-md:hidden">
                     {data[item.id - 1]?.file_date}
                   </td>
-                  <td className="py-3 text-center">
+                  <td className="py-3 text-center max-md:hidden">
                     {data[item.id - 1]?.username}
                   </td>
                   <td className="text-center *:px-1 *:text-4xl">
@@ -199,9 +206,9 @@ export default function Index(props) {
                     </span>
                   </td>
                   <td className="py-3 ">{item.category_name}</td>
-                  <td className="py-3 text-center">{item.file_date}</td>
-                  <td className="py-3 text-center">{item.username}</td>
-                  <td className="text-center *:px-1 *:text-4xl">
+                  <td className="py-3 text-center max-md:hidden">{item.file_date}</td>
+                  <td className="py-3 text-center max-md:hidden">{item.username}</td>
+                  <td className="flex flex-col sm:flex-row text-center *:px-1 *:text-4xl">
                     <Link
                     href={`/version/${item.id}`}
                     trigger={true}
