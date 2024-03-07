@@ -208,7 +208,7 @@ export default function Index(props) {
                   <td className="py-3 ">{item.category_name}</td>
                   <td className="py-3 text-center max-md:hidden">{item.file_date}</td>
                   <td className="py-3 text-center max-md:hidden">{item.username}</td>
-                  <td className="flex flex-col sm:flex-row text-center *:px-1 *:text-4xl">
+                  <td className="flex flex-col sm:flex-row items-center justify-center text-center *:px-1 *:text-4xl">
                     <Link
                     href={`/version/${item.id}`}
                     trigger={true}
