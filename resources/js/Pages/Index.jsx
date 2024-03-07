@@ -198,7 +198,8 @@ export default function Index(props) {
                   <td className="py-3 text-center">{item.file_date}</td>
                   <td className="py-3 text-center">{item.username}</td>
                   <td className="text-center *:px-1 *:text-4xl">
-                    <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
+                    <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                    onClick={togglePopup}>
                       schedule
                     </span>
                     {/* Replace with plus icon code */}
@@ -231,7 +232,7 @@ export default function Index(props) {
                 width: "30px",
                 height: "30px",
                 backgroundColor:
-                  pageNumber + 1 === currentPage ? "darkred" : "white",
+                pageNumber + 1 === currentPage ? "darkred" : "white",
                 color: pageNumber + 1 === currentPage ? "white" : "black",
                 borderRadius: "50%",
                 margin: "0.5rem",
