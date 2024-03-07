@@ -116,7 +116,7 @@
 
 import React, { useState, useEffect } from "react";
 
-function PopVersioning() {
+function PopVersioning(props) {
   const [versionHistoryData, setVersionHistoryData] = useState([
     // Replace with your actual version history data
     {
@@ -164,10 +164,11 @@ function PopVersioning() {
     setCurrentPage(pageNumber);
   };
 
-  return (
+  return(props.trigger) ? (
     <div className="fixed top-0 left-0 w-full h-screen bg-black bg-opacity-20 flex justify-center items-center">
       <div className="relative flex flex-col p-10 w-full h-3/4 max-w-screen-xl bg-white text-center rounded-lg">
-        <button className="absolute top-4 right-4 bg-transparent border-none">
+        <button className="absolute top-4 right-4 bg-transparent border-none"
+        onClick={()=> props.setTrigger(false)}>
           <img src="../../../assets/x.png" width="20px" alt="Close Button" />
         </button>
         <h1 className="text-2xl font-bold pb-5">Version History</h1>
@@ -218,7 +219,9 @@ function PopVersioning() {
         </div>
       </div>
     </div>
-  );
+  ): "";
 }
+
+
 
 export default PopVersioning;

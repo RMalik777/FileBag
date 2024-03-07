@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import Navbar from "../Components/Navbar/Navbar";
+import PopVersioning from "../Components/Popup/PopVersioning";
 import { Head, usePage } from "@inertiajs/react";
 
 export default function Index(props) {
@@ -31,6 +32,14 @@ export default function Index(props) {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  const [isPopOpen, setIsPopOpen] = useState(false); // State to manage popup visibility
+
+  // Function to toggle popup visibility
+  const togglePopup = () => {
+    setIsPopOpen(!isPopOpen);
+  };
+
   return (
     <>
       <Head title="Dashboard | Filebag" />
@@ -153,7 +162,8 @@ export default function Index(props) {
                 <td className="py-3 text-center">{data[item.id-1].file_date}</td>
                 <td className="py-3 text-center">{data[item.id-1].username}</td>
                 <td className="text-center *:px-1 *:text-4xl">
-                  <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer">
+                  <span className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                  onClick={togglePopup}>
                     schedule
                   </span>
                   {/* Replace with plus icon code */}
@@ -197,6 +207,10 @@ export default function Index(props) {
             </button>
           ))}
         </div>
+        {isPopOpen && (
+            <PopVersioning trigger={true} fileName="PopVersioning"
+            setTrigger = {setIsPopOpen} />
+         )}
       </div>
     </>
   );
