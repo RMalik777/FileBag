@@ -5,7 +5,7 @@ import { Head, usePage } from "@inertiajs/react";
 export default function Index(props) {
   
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(2); //per page nampilin brp kolom (ini valuenya 2 buat ngetes aja)
+  const [itemsPerPage, setItemsPerPage] = useState(2); //per page nampilin brp kolom (ini valuenya 2 buat ngetes aja karena data cuma 4)
 
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
