@@ -85,22 +85,16 @@ export default function Index(props) {
               id="category"
               name="category"
               defaultValue="category"
+              onChange=""
               className="bg-cimbred font-bold rounded-md text-white text-left px-2 py-3">
               <option className="hidden" selected>
-                Category
+                Select Category
               </option>
-              <option className="font-medium" value={1}>
-                IT
-              </option>
-              <option className="font-medium" value={2}>
-                HR
-              </option>
-              <option className="font-medium" value={3}>
-                Management
-              </option>
-              <option className="font-medium" value={4}>
-                L&T
-              </option>
+              {category.map((category) => (
+                <option key={category.id} value={category.id}>
+                  {category.category_name}
+                </option>
+              ))}
             </select>
           </div>
           <div className="flex flex-row gap-4">
@@ -126,10 +120,10 @@ export default function Index(props) {
               </div>
             </form>
             <Link href="/" className="">
-            <button className="bg-cimbred h-full px-8 py-4 rounded-full text-white font-medium">
-              Clear
+              <button className="bg-cimbred h-full px-8 py-4 rounded-full text-white font-medium">
+                Clear
               </button>
-              </Link>
+            </Link>
           </div>
         </div>
         <table className="table-auto w-full h-full bg-cimbred border-cimbred border-none text-white font-medium text-xl border-collapse border-spacing-y-10 mt-4">
@@ -171,11 +165,11 @@ export default function Index(props) {
                     {data[item.id - 1]?.username}
                   </td>
                   <td className="text-center *:px-1 *:text-4xl">
-                  <Link
-                    href={`/${item.id}/version`}
-                    trigger={true}
-                    setTrigger={setIsPopOpen}
-                    className="*:px-1 *:text-4xl">
+                    <Link
+                      href={`/${item.id}/version`}
+                      trigger={true}
+                      setTrigger={setIsPopOpen}
+                      className="*:px-1 *:text-4xl">
                       <span
                         className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
                         onClick={togglePopup}>
@@ -184,10 +178,10 @@ export default function Index(props) {
                     </Link>
                     {/* Replace with plus icon code */}
                     <Link
-                    href={`/${item.id}/version`}
-                    trigger={true}
-                    setTrigger={setIsPopOpen}
-                    className="*:px-1 *:text-4xl">
+                      href={`/${item.id}/version`}
+                      trigger={true}
+                      setTrigger={setIsPopOpen}
+                      className="*:px-1 *:text-4xl">
                       <span
                         className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
                         onClick={togglePopup}>
@@ -215,14 +209,18 @@ export default function Index(props) {
                     </span>
                   </td>
                   <td className="py-3 ">{item.category_name}</td>
-                  <td className="py-3 text-center max-md:hidden">{item.file_date}</td>
-                  <td className="py-3 text-center max-md:hidden">{item.username}</td>
+                  <td className="py-3 text-center max-md:hidden">
+                    {item.file_date}
+                  </td>
+                  <td className="py-3 text-center max-md:hidden">
+                    {item.username}
+                  </td>
                   <td className="flex flex-col sm:flex-row items-center justify-center text-center *:px-1 *:text-4xl">
                     <Link
-                    href={`/${item.id}/version`}
-                    trigger={true}
-                    setTrigger={setIsPopOpen}
-                    className="*:px-1 *:text-4xl">
+                      href={`/${item.id}/version`}
+                      trigger={true}
+                      setTrigger={setIsPopOpen}
+                      className="*:px-1 *:text-4xl">
                       <span
                         className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
                         onClick={togglePopup}>
@@ -231,10 +229,10 @@ export default function Index(props) {
                     </Link>
                     {/* Replace with plus icon code */}
                     <Link
-                    href={`/${item.id}/update`}
-                    trigger={true}
-                    setTrigger={setIsPopOpen}
-                    className="*:px-1 *:text-4xl">
+                      href={`/${item.id}/update`}
+                      trigger={true}
+                      setTrigger={setIsPopOpen}
+                      className="*:px-1 *:text-4xl">
                       <span
                         className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
                         onClick={togglePopup}>
