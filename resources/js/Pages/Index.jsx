@@ -5,8 +5,8 @@ import { Head, usePage } from "@inertiajs/react";
 export default function Index(props) {
   
   const [currentPage, setCurrentPage] = useState(1);
-  const [itemsPerPage, setItemsPerPage] = useState(4); //per page mau nampilin brp kolom (disesuaiin)
-  
+  const [itemsPerPage, setItemsPerPage] = useState(2); //per page nampilin brp kolom (ini valuenya 2 buat ngetes aja karena data cuma 4)
+
   const [searchTerm, setSearchTerm] = useState('');
   const [searchResults, setSearchResults] = useState([]);
   
@@ -29,6 +29,11 @@ export default function Index(props) {
   const handlePageChange = (pageNumber) => {
     setCurrentPage(pageNumber);
   };
+
+  useEffect(() => {
+    const slicedData = header.slice(indexOfFirstItem, indexOfLastItem);
+    setSearchResults(slicedData); // Pass the sliced data to searchResults
+  }, [currentPage, header, itemsPerPage]);
 
   return (
     <>
@@ -135,7 +140,7 @@ export default function Index(props) {
             </tr>
           </thead>
           <tbody className="bg-white text-black">
-            {header.map((item, index) => (
+            {searchResults.map((item, index) => (
               <tr
                 key={item.id}
                 className="border-cimbred border-x-0 border-y-2">
