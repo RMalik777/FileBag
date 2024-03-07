@@ -48,34 +48,36 @@ export default function PopVersioning(props) {
   console.log(result);
 
   return (
-  <>
+    <>
       <Head title="Version History | Filebag" />
       <div className="w-full min-h-screen h-full bg-black bg-opacity-20 flex justify-center items-center">
         <div className="relative flex flex-col p-10 w-full h-3/4 max-w-screen-xl bg-white text-center rounded-lg">
           <Link href="/">
             <button className="absolute top-4 right-4 bg-transparent border-none">
-              <img src="../../../assets/x.png" width="20px" alt="Close Button" />
+              <span className="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer duration-300 ease-out">close</span>
             </button>
           </Link>
-          <h1 className="text-2xl font-bold pb-5">Version History</h1>
+          <h1 className="text-2xl lg:text-3xl font-bold pb-5">Version History</h1>
           <table>
             <thead className="bg-3">
-              <tr className="text-white text-md">
+              <tr className="text-white text-md *:text-xl font-medium">
                 <th className="py-5">Version</th>
                 <th className="py-5">Upload Date</th>
-                <th className="py-5">Upload By</th>
+                <th className="py-5 max-md:hidden">Upload By</th>
                 <th className="py-5">Action</th>
               </tr>
             </thead>
             <tbody className="bg-white text-black">
               {result.map((item, index) => (
-                <tr key={index} className="border-x-0 border-y-2">
+                <tr
+                  key={index}
+                  className="border-x-0 border-y-2 *:text-lg *:font-medium">
                   <td className="p-5">{item.version}</td>
                   <td className="p-5">{item.file_date}</td>
-                  <td className="p-5">{item.user_id}</td>
+                  <td className="p-5 max-md:hidden">{item.user_id}</td>
                   <td className="p-5">
-                  <a href={`/${item.file_path}`} download>
-                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
+                    <a href={`/${item.file_path}`} download>
+                      <span className="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer duration-300 ease-out">
                         download_for_offline
                       </span>
                     </a>
@@ -107,6 +109,6 @@ export default function PopVersioning(props) {
           </div> */}
         </div>
       </div>
-  </>
+    </>
   );
 }

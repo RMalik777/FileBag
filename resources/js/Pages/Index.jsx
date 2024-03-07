@@ -54,7 +54,7 @@ export default function Index(props) {
             </div>
             <div>
               <a href="/upload" className="">
-                <button className="group flex flex-row justify-center items-center text-xl lg:text-2xl px-5 py-3 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill">
+                <button className="group flex flex-row justify-center items-center text-xl lg:text-2xl px-5 py-3 text-white font-semibold rounded-full border border-4 border-white hover:bg-white hover:text-black *:hover:text-black *:hover:material-fill duration-200 ease-out *:duration-200 *:ease-out">
                   <span className="material-symbols-rounded pr-4 text-white text-2xl">
                     cloud_upload
                   </span>
@@ -120,7 +120,7 @@ export default function Index(props) {
               </div>
             </form>
             <Link href="/" className="">
-              <button className="bg-cimbred h-full px-8 py-4 rounded-full text-white font-medium">
+              <button className="bg-transparent border-cimbred border-4 h-full px-8 py-4 rounded-full text-cimbred font-medium hover:bg-cimbred hover:text-white duration-300 ease-in-out">
                 Clear
               </button>
             </Link>
@@ -153,7 +153,7 @@ export default function Index(props) {
                   key={item.id}
                   className="border-cimbred border-x-0 border-y-2">
                   <td className="py-3">
-                    <span className="duration-300 ease-out">
+                    <span className="duration-200 ease-out">
                       {data[item.id - 1]?.file_name}
                     </span>
                   </td>
@@ -171,7 +171,7 @@ export default function Index(props) {
                       setTrigger={setIsPopOpen}
                       className="*:px-1 *:text-4xl">
                       <span
-                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
                         onClick={togglePopup}>
                         schedule
                       </span>
@@ -183,13 +183,13 @@ export default function Index(props) {
                       setTrigger={setIsPopOpen}
                       className="*:px-1 *:text-4xl">
                       <span
-                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
                         onClick={togglePopup}>
                         add_circle
                       </span>
                     </Link>
                     <a href={data[item.id - 1]?.file_path} download>
-                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
+                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out">
                         download_for_offline
                       </span>
                     </a>
@@ -204,7 +204,7 @@ export default function Index(props) {
                   key={item.id}
                   className="border-cimbred border-x-0 border-y-2">
                   <td className="py-3">
-                    <span className="duration-300 ease-out">
+                    <span className="duration-200 ease-out">
                       {item.file_name}
                     </span>
                   </td>
@@ -222,7 +222,7 @@ export default function Index(props) {
                       setTrigger={setIsPopOpen}
                       className="*:px-1 *:text-4xl">
                       <span
-                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
                         onClick={togglePopup}>
                         schedule
                       </span>
@@ -234,13 +234,13 @@ export default function Index(props) {
                       setTrigger={setIsPopOpen}
                       className="*:px-1 *:text-4xl">
                       <span
-                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer"
+                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
                         onClick={togglePopup}>
                         add_circle
                       </span>
                     </Link>
                     <a href={item.file_path} download>
-                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer">
+                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out">
                         download_for_offline
                       </span>
                     </a>

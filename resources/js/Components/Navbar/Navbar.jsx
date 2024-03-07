@@ -27,7 +27,7 @@ export default function Navbar() {
   return (
     <header
       className={
-        "fixed w-full z-10 flex flex-row justify-between items-center px-5  transition-all duration-200 " +
+        "fixed w-full z-10 flex flex-row justify-between items-center px-5  transition-all duration-500 ease-in-out " +
         (scrollY > 100 || url !== "/" ? "bg-cimbred" : "bg-white/0")
       }>
       <div className="max-lg:hidden w-full flex flex-row gap-2 items-center justify-start">
@@ -47,7 +47,7 @@ export default function Navbar() {
                       ? "text-white"
                       : "text-white"
                     : "") +
-                  " hover:text-1 hover:underline duration-200 ease-out"
+                  " hover:text-red-300 hover:underline duration-300 ease-out"
                 }>
                 Home
               </Link>
@@ -57,7 +57,7 @@ export default function Navbar() {
                 href="/upload"
                 className={
                   (url.startsWith("/upload") ? "text-white" : "") +
-                  " hover:text-1 hover:underline duration-200 ease-out"
+                  " hover:text-red-300 hover:underline duration-300 ease-out"
                 }>
                 Upload
               </Link>
@@ -67,7 +67,7 @@ export default function Navbar() {
                 href="/logout"
                 className={
                   (url === "" ? "text-white" : "") +
-                  " hover:text-1 hover:underline duration-200 ease-out"
+                  " hover:text-red-300 hover:underline duration-300 ease-out"
                 }>
                 Logout
               </Link>

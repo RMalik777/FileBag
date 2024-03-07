@@ -132,7 +132,7 @@ export default function Upload(props, { csrf_token }) {
                   Drop files or{" "}
                   <label
                     htmlFor="targetfile"
-                    className="text-blue-400 cursor-pointer underline hover:text-blue-500">
+                    className="text-blue-400 cursor-pointer underline hover:text-blue-500 duration-200 ease-out">
                     browse
                   </label>
                   <br />

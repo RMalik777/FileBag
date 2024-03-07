@@ -84,7 +84,7 @@ export default function Login({ csrf_token }) {
               </div>
               <button
                 type="submit"
-                className="w-full bg-white text-black font-bold py-2 rounded-lg hover:bg-red-900">
+                className="w-full bg-white text-black font-bold py-2 rounded-lg hover:bg-5 hover:text-black duration-300 ease-out">
                 Login
               </button>
             </form>
