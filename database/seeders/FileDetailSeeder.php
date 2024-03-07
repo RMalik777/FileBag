@@ -30,10 +30,65 @@ class FileDetailSeeder extends Seeder
                 'file_path' => './storage/SOP HR.pdf'
             ],
             [
-                'file_name' => 'SOP_LnT_2024',
+                'file_name' => 'SOP_LnD_2024',
                 'file_size' => 1.2,
                 'file_path' => './storage/SOP LND.pdf'
-            ]
+            ],
+            [
+                'file_name' => 'SOP_Finance_2024',
+                'file_size' => 1.8,
+                'file_path' => './storage/SOP FINANCE.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Sales_2024',
+                'file_size' => 1.3,
+                'file_path' => './storage/SOP SALES.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Marketing_2024',
+                'file_size' => 1.7,
+                'file_path' => './storage/SOP MARKETING.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Production_2024',
+                'file_size' => 1.9,
+                'file_path' => './storage/SOP PRODUCTION.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Quality_2024',
+                'file_size' => 1.6,
+                'file_path' => './storage/SOP QUALITY.pdf'
+            ],
+            [
+                'file_name' => 'SOP_R&D_2024',
+                'file_size' => 1.4,
+                'file_path' => './storage/SOP R&D.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Purchase_2024',
+                'file_size' => 1.1,
+                'file_path' => './storage/SOP PURCHASE.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Stores_2024',
+                'file_size' => 1.0,
+                'file_path' => './storage/SOP STORES.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Logistics_2024',
+                'file_size' => 1.2,
+                'file_path' => './storage/SOP LOGISTICS.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Security_2024',
+                'file_size' => 1.3,
+                'file_path' => './storage/SOP SECURITY.pdf'
+            ],
+            [
+                'file_name' => 'SOP_Admin_2024',
+                'file_size' => 1.4,
+                'file_path' => './storage/SOP ADMIN.pdf'
+            ],
         ];
         DB::table('file_details')->insert($file_details);
 

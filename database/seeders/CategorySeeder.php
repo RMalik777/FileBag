@@ -25,7 +25,42 @@ class CategorySeeder extends Seeder
             ],
             [
                 'category_name' => 'LnT'
-            ]
+            ],
+            [
+                'category_name' => 'Finance'],
+            [
+                'category_name' => 'Sales'
+            ],
+            [
+                'category_name' => 'Marketing'
+            ],
+            [
+                'category_name' => 'Production'
+            ],
+            [
+                'category_name' => 'Quality'
+            ],
+            [
+                'category_name' => 'R&D'
+            ],
+            [
+                'category_name' => 'Purchase'
+            ],
+            [
+                'category_name' => 'Stores'
+            ],
+            [
+                'category_name' => 'Logistics'
+            ],
+            [
+                'category_name' => 'Security'
+            ],
+            [
+                'category_name' => 'Admin'
+            ],
+            [
+                'category_name' => 'Legal'
+            ],
         ];
         DB::table('categories')->insert($categories);
     }
