@@ -45,14 +45,12 @@ export default function PopVersioning(props) {
     setCurrentPage(pageNumber);
   };
   console.log(props);
-  
 
-  return  (
+  return (
     <div className="w-full min-h-screen h-full bg-black bg-opacity-20 flex justify-center items-center">
       <div className="relative flex flex-col p-10 w-full h-3/4 max-w-screen-xl bg-white text-center rounded-lg">
         <a href="/">
-          <button
-            className="absolute top-4 right-4 bg-transparent border-none">
+          <button className="absolute top-4 right-4 bg-transparent border-none">
             <img src="../../../assets/x.png" width="20px" alt="Close Button" />
           </button>
         </a>
@@ -73,9 +71,11 @@ export default function PopVersioning(props) {
                 <td className="p-5">{item.file_date}</td>
                 <td className="p-5">{item.user_id}</td>
                 <td className="p-5">
-                  <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
-                    download_for_offline
-                  </span>
+                  <a href={item.file_path} download>
+                    <span className="material-symbols-rounded text-3xl hover:material-fill hover:text-cimbred cursor-pointer">
+                      download_for_offline
+                    </span>
+                  </a>
                 </td>
               </tr>
             ))}
@@ -105,5 +105,5 @@ export default function PopVersioning(props) {
         </div> */}
       </div>
     </div>
-  )
+  );
 }
