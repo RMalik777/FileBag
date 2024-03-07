@@ -137,7 +137,7 @@ export default function Update(props, { csrf_token }) {
                   Drop files or{" "}
                   <label
                     htmlFor="targetfile"
-                    className="text-blue-400 cursor-pointer underline hover:text-blue-500">
+                    className="text-blue-400 cursor-pointer underline hover:text-blue-500 duration-300 ease-out">
                     browse
                   </label>
                   <br />
@@ -169,7 +169,7 @@ export default function Update(props, { csrf_token }) {
             <div className="flex flex-row gap-14 items-center">
               <button
                 type="submit"
-                className="bg-white border border-4 border-cimbred text-cimbred font-bold text-2xl px-5 py-2 rounded-full duration-200 hover:bg-cimbred hover:text-white">
+                className="bg-white border border-4 border-cimbred text-cimbred font-bold text-2xl px-5 py-2 rounded-full duration-300 ease-out hover:bg-cimbred hover:text-white">
                 Upload
               </button>
             </div>
