@@ -26,4 +26,5 @@ Route::get('/login', [PageController::class, 'login']);
 Route::post('/login', [UserLoginController::class, 'store']);
 Route::get('/{id}/version', [PageController::class, 'PopVersioning']);
 Route::get('/{id}/update', [PageController::class, 'update']);
+Route::post('/{id}/update', [UploadController::class, 'update']);
 Route::get('/logout', [UserloginController::class, 'logout']);

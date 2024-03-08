@@ -104,11 +104,10 @@ export default function Update(props, { csrf_token }) {
                 </label>
                 <select
                   name="category"
-                  className="form-select p-2 border border-solid border-gray-400 rounded-md mb-4 font-medium text-gray-500"
-                  disabled>
-                  <option value="" className="text-gray-300" hidden>
+                  className="form-select p-2 border border-solid border-gray-400 rounded-md mb-4 font-medium text-gray-500">
+                  <option value={categories.id} className="text-gray-300" hidden>
                     Select Category
-                  </option>
+                  </option>``
                   {categories.map((category) => (
                     <option
                       key={category.id}

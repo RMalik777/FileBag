@@ -4,6 +4,7 @@ import Popup from "../Components/Popup/Popup";
 import Navbar from "../Components/Navbar/Navbar";
 
 export default function Upload(props, { csrf_token }) {
+  console.log(props);
   const categories = props.category;
   const [buttonPopup, setButtonPopup] = useState(false);
   let sizeValidaton = false;

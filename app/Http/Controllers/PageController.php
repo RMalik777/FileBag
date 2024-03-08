@@ -40,7 +40,7 @@ class PageController extends Controller
       ->join('file_details as fd', 'rc.file_detail_id', '=', 'fd.id')
       ->join('users as u', 'rc.user_id', '=', 'u.id')
       ->where('rc.rn', 1)
-      ->orderBy('rc.file_date', 'desc')
+      ->orderBy('file_date', 'desc')
       ->get();
 
     if (Auth::user()) {
