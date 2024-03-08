@@ -95,8 +95,11 @@ export default function Upload(props, { csrf_token }) {
                 <input
                   name="title"
                   type="text"
-                  className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium"
+                  className="form-input p-2 border border-solid border-black rounded-md font-medium"
                 />
+                <p className="mb-8 text-red-500 font-medium">
+                  {props.errors.title ? props.errors.title : " "}
+                </p>
                 <label
                   htmlFor="category"
                   className="text-2xl text-black font-bold pb-2">
@@ -106,8 +109,12 @@ export default function Upload(props, { csrf_token }) {
                   type="text"
                   name="category"
                   id=""
-                  className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium"
+                  className="form-input p-2 border border-solid border-black rounded-md font-medium"
                 />
+                <p className="mb-8 text-red-500 font-medium">
+                  {props.errors.category ? props.errors.category : " "}
+                </p>
+
                 {/* <select
                   name="category"
                   className="form-select p-2 border border-solid border-black rounded-md mb-4 font-medium">
@@ -128,6 +135,7 @@ export default function Upload(props, { csrf_token }) {
                 onChange={handleInput}
                 hidden
               />
+
               <label
                 htmlFor="targetfile"
                 className="flex flex-col items-center justify-center mb-8 h-auto aspect-video max-w-4xl min-w-60 w-1/2 border border-4 border-zinc-400 rounded-lg"
@@ -138,8 +146,7 @@ export default function Upload(props, { csrf_token }) {
                 </span>
                 <p className="text-lg font-medium text-center">
                   Drop files or{" "}
-                  <span
-                    className="text-blue-400 cursor-pointer underline hover:text-blue-500 duration-200 ease-out">
+                  <span className="text-blue-400 cursor-pointer underline hover:text-blue-500 duration-200 ease-out">
                     browse
                   </span>
                   <br />
@@ -161,8 +168,12 @@ export default function Upload(props, { csrf_token }) {
                         )
                       : "Maximum size 3MB, PDF format only"}
                   </span>
+                  <p className="mb-8 text-red-500 font-medium">
+                {props.errors.targetfile ? props.errors.targetfile : " "}
+              </p>
                 </p>
               </label>
+              
             </div>
           </main>
 
