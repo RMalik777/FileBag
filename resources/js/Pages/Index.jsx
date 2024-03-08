@@ -150,51 +150,51 @@ export default function Index(props) {
             <tbody className="bg-white text-black">
               {slicedData.map((item, index) => (
                 <tr
-                  key={item.id}
-                  className="border-cimbred border-x-0 border-y-2">
-                  <td className="py-3">
-                    <span className="duration-200 ease-out">
-                      {data[item.id - 1]?.file_name}
+                key={item.id}
+                className="border-cimbred border-x-0 border-y-2">
+                <td className="py-3">
+                  <span className="duration-200 ease-out">
+                    {item.file_name}
+                  </span>
+                </td>
+                <td className="py-3 ">{item.category_name}</td>
+                <td className="py-3 text-center max-md:hidden">
+                  {item.file_date}
+                </td>
+                <td className="py-3 text-center max-md:hidden">
+                  {item.username}
+                </td>
+                <td className="flex flex-col sm:flex-row items-center justify-center text-center *:px-1 *:text-4xl">
+                  <Link
+                    href={`/${item.id}/version`}
+                    trigger={true}
+                    setTrigger={setIsPopOpen}
+                    className="*:px-1 *:text-4xl *:mt-1">
+                    <span
+                      className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
+                      onClick={togglePopup}>
+                      schedule
                     </span>
-                  </td>
-                  <td className="py-3 ">{data[item.id - 1]?.category_name}</td>
-                  <td className="py-3 text-center max-md:hidden">
-                    {data[item.id - 1]?.file_date}
-                  </td>
-                  <td className="py-3 text-center max-md:hidden">
-                    {data[item.id - 1]?.username}
-                  </td>
-                  <td className="text-center *:px-1 *:text-4xl">
-                    <Link
-                      href={`/${item.id}/version`}
-                      trigger={true}
-                      setTrigger={setIsPopOpen}
-                      className="*:px-1 *:text-4xl">
-                      <span
-                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
-                        onClick={togglePopup}>
-                        schedule
-                      </span>
-                    </Link>
-                    {/* Replace with plus icon code */}
-                    <Link
-                      href={`/${item.id}/version`}
-                      trigger={true}
-                      setTrigger={setIsPopOpen}
-                      className="*:px-1 *:text-4xl">
-                      <span
-                        className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
-                        onClick={togglePopup}>
-                        add_circle
-                      </span>
-                    </Link>
-                    <a href={data[item.id - 1]?.file_path} download>
-                      <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out">
-                        download_for_offline
-                      </span>
-                    </a>
-                  </td>
-                </tr>
+                  </Link>
+                  {/* Replace with plus icon code */}
+                  <Link
+                    href={`/${item.id}/update`}
+                    trigger={true}
+                    setTrigger={setIsPopOpen}
+                    className="*:px-1 *:text-4xl">
+                    <span
+                      className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
+                      onClick={togglePopup}>
+                      add_circle
+                    </span>
+                  </Link>
+                  <a href={item.file_path} download>
+                    <span class="material-symbols-rounded text-4xl hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out">
+                      download_for_offline
+                    </span>
+                  </a>
+                </td>
+              </tr>
               ))}
             </tbody>
           ) : (

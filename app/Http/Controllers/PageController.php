@@ -19,29 +19,52 @@ class PageController extends Controller
   public function index(Request $request)
   {
     $searchword = $request->searchword;
+    $data = $result = DB::table(DB::raw('(SELECT fh.*, ROW_NUMBER() OVER (PARTITION BY fh.category_id ORDER BY fh.version DESC) AS rn FROM file_headers fh) as rc'))
+    ->select('rc.id', 'rc.version', 'rc.file_date', 'rc.category_id', 'rc.user_id', 'u.username', 'c.category_name', 'fd.file_name', 'fd.file_path')
+    ->join('categories as c', 'rc.category_id', '=', 'c.id')
+    ->join('file_details as fd', 'rc.file_detail_id', '=', 'fd.id')
+    ->join('users as u', 'rc.user_id', '=', 'u.id')
+    ->where('rc.rn', 1)
+    ->orderBy('file_date', 'desc');
+
     if (strlen($searchword)) {
-      $fileDetail = FileDetail::where('file_name', 'like', '%' . $searchword . '%')->get();
-      if ($fileDetail) {
-        $fileHeaderIds = $fileDetail->pluck('id');
-        $fileHeaderShow = FileHeader::whereIn('file_detail_id', $fileHeaderIds)->get();
-      } else {
-        $fileHeaderShow = FileHeader::all();
-      }
-    } else {
-      $fileHeaderShow = FileHeader::all();
+        $fileDetail = FileDetail::where('file_name', 'like', '%' . $searchword . '%')->get();
+        if ($fileDetail->isNotEmpty()) {
+            $fileHeaderIds = $fileDetail->pluck('id');
+            $data->whereIn('rc.file_detail_id', $fileHeaderIds);
+        }
     }
-    $fileHeader = FileHeader::all();
-    $fileDetail = FileDetail::all();
+    else{
+      $fileDetail = FileDetail::all();
+    }
+
+    $data = $data->get();
+
     $category = Category::all();
     $users = User::all();
-    $data = $result = DB::table(DB::raw('(SELECT fh.*, ROW_NUMBER() OVER (PARTITION BY fh.category_id ORDER BY fh.version DESC) AS rn FROM file_headers fh) as rc'))
-      ->select('rc.id', 'rc.version', 'rc.file_date', 'rc.category_id', 'rc.user_id', 'u.username', 'c.category_name', 'fd.file_name', 'fd.file_path')
-      ->join('categories as c', 'rc.category_id', '=', 'c.id')
-      ->join('file_details as fd', 'rc.file_detail_id', '=', 'fd.id')
-      ->join('users as u', 'rc.user_id', '=', 'u.id')
-      ->where('rc.rn', 1)
-      ->orderBy('file_date', 'desc')
-      ->get();
+    $fileHeaderShow = FileHeader::all();
+    $fileHeader = FileHeader::all();
+    // if (strlen($searchword)) {
+    //   $fileDetail = FileDetail::where('file_name', 'like', '%' . $searchword . '%')->get();
+    //   if ($fileDetail) {
+    //     $fileHeaderIds = $fileDetail->pluck('id');
+    //     $fileHeaderShow = FileHeader::whereIn('file_detail_id', $fileHeaderIds)->get();
+    //   } else {
+    //     $fileHeaderShow = FileHeader::all();
+    //   }
+    // } else {
+    //   $fileHeaderShow = FileHeader::all();
+    // }
+    // $fileDetail = FileDetail::all();
+    // $data = $result = DB::table(DB::raw('(SELECT fh.*, ROW_NUMBER() OVER (PARTITION BY fh.category_id ORDER BY fh.version DESC) AS rn FROM file_headers fh) as rc'))
+    //   ->select('rc.id', 'rc.version', 'rc.file_date', 'rc.category_id', 'rc.user_id', 'u.username', 'c.category_name', 'fd.file_name', 'fd.file_path')
+    //   ->join('categories as c', 'rc.category_id', '=', 'c.id')
+    //   ->join('file_details as fd', 'rc.file_detail_id', '=', 'fd.id')
+    //   ->join('users as u', 'rc.user_id', '=', 'u.id')
+    //   ->where('rc.rn', 1)
+    //   ->orderBy('file_date', 'desc')
+    //   ->get();
+    
 
     if (Auth::user()) {
       return Inertia::render('Index', [
