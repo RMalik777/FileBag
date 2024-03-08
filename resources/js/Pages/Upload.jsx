@@ -102,7 +102,12 @@ export default function Upload(props, { csrf_token }) {
                   className="text-2xl text-black font-bold pb-2">
                   Category <span className="text-red-600">*</span>
                 </label>
-                <input type="text" name="category" id="" className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium" />
+                <input
+                  type="text"
+                  name="category"
+                  id=""
+                  className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium"
+                />
                 {/* <select
                   name="category"
                   className="form-select p-2 border border-solid border-black rounded-md mb-4 font-medium">
@@ -123,7 +128,8 @@ export default function Upload(props, { csrf_token }) {
                 onChange={handleInput}
                 hidden
               />
-              <div
+              <label
+                htmlFor="targetfile"
                 className="flex flex-col items-center justify-center mb-8 h-auto aspect-video max-w-4xl min-w-60 w-1/2 border border-4 border-zinc-400 rounded-lg"
                 onDragOver={handleDragOver}
                 onDrop={handleDrop}>
@@ -132,11 +138,10 @@ export default function Upload(props, { csrf_token }) {
                 </span>
                 <p className="text-lg font-medium text-center">
                   Drop files or{" "}
-                  <label
-                    htmlFor="targetfile"
+                  <span
                     className="text-blue-400 cursor-pointer underline hover:text-blue-500 duration-200 ease-out">
                     browse
-                  </label>
+                  </span>
                   <br />
                   <span className="font-normal">
                     {uploadedFile
@@ -157,7 +162,7 @@ export default function Upload(props, { csrf_token }) {
                       : "Maximum size 3MB, PDF format only"}
                   </span>
                 </p>
-              </div>
+              </label>
             </div>
           </main>
 

@@ -22,7 +22,7 @@ class UploadController extends Controller
       'targetfile.required' => 'Please select the file.',
     ]);
     // $targetcategory = Category::find($request->category);
-    // $targetcategory = Category::where('category_name', $request->category)->firstOrCreate(['category_name' => $request->category]);
+    $targetcategory = Category::where('category_name', $request->category)->firstOrCreate(['category_name' => $request->category]);
     if ($targetcategory === null) {
       $newversion = 1;
     } else {
