@@ -101,7 +101,8 @@ export default function Upload(props, { csrf_token }) {
                   className="text-2xl text-black font-bold pb-2">
                   Category <span className="text-red-600">*</span>
                 </label>
-                <select
+                <input type="text" name="category" id="" className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium" />
+                {/* <select
                   name="category"
                   className="form-select p-2 border border-solid border-black rounded-md mb-4 font-medium">
                   <option value="" className="text-gray-300" hidden>
@@ -112,7 +113,7 @@ export default function Upload(props, { csrf_token }) {
                       {category.category_name}
                     </option>
                   ))}
-                </select>
+                </select> */}
               </div>
               <input
                 type="file"
