@@ -220,7 +220,7 @@ export default function Index(props) {
                       href={`/${item.id}/version`}
                       trigger={true}
                       setTrigger={setIsPopOpen}
-                      className="*:px-1 *:text-4xl">
+                      className="*:px-1 *:text-4xl *:mt-1">
                       <span
                         className="material-symbols-rounded hover:material-fill hover:text-cimbred cursor-pointer duration-200 ease-out"
                         onClick={togglePopup}>
