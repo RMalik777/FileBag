@@ -42,7 +42,7 @@ export default function Login({ csrf_token }) {
         <div className="flex lg:flex-[55%] h-auto lg:h-full max-lg:rounded-md items-center justify-center bg-cimbred">
           <div className="w-full max-w-md p-8">
             <h2 className="text-white font-semibold text-3xl mb-8 text-center">
-              Login Page
+              Login
             </h2>
             <img
               src={filexCIMB}

@@ -97,11 +97,15 @@ export default function Update(props, { csrf_token }) {
                   type="text"
                   className="form-input p-2 border border-solid border-black rounded-md mb-8 font-medium"
                 />
+                <p className="mb-8 text-red-500 font-medium">
+                {props.errors.targetfile ? props.errors.targetfile : " "}
+              </p>
                 <label
                   htmlFor="category"
                   className="text-2xl text-black font-bold pb-2">
                   Category <span className="text-red-600">*</span>
                 </label>
+                
                 <select
                   name="category"
                   className="form-select p-2 border border-solid border-gray-400 rounded-md mb-4 font-medium text-gray-500">
@@ -158,6 +162,9 @@ export default function Update(props, { csrf_token }) {
                         )
                       : "Maximum size 3MB, PDF format only"}
                   </span>
+                  <p className="mb-8 text-red-500 font-medium">
+                {props.errors.targetfile ? props.errors.targetfile : " "}
+              </p>
                 </p>
               </div>
             </div>
