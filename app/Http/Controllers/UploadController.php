@@ -22,7 +22,7 @@ class UploadController extends Controller
       'targetfile.required' => 'Please select the file.',
     ]);
     // $targetcategory = Category::find($request->category);
-    $targetcategory = Category::where('category_name', $request->category)->firstOrCreate(['category_name' => $request->category]);
+    // $targetcategory = Category::where('category_name', $request->category)->firstOrCreate(['category_name' => $request->category]);
     if ($targetcategory === null) {
       $newversion = 1;
     } else {
@@ -72,9 +72,9 @@ class UploadController extends Controller
       'targetfile.required' => 'Please select the file.',
     ]);
     $user = $request->user();
-    $targetcategory = Category::find($request->category);
+    $toupdate = Category::find($request->category);
     $tostore = $request->file('targetfile');
-    $version = FileHeader::where('category_id', $targetcategory->id)->max('version');
+    $version = FileHeader::where('category_id', $toupdate->id)->max('version');
     $nextversion = $version + 1;
     $fileSize = $request->file('targetfile')->getSize() / 1000;
     if ($fileSize > 3072) {
@@ -100,7 +100,7 @@ class UploadController extends Controller
       'file_date' => now(),
       'file_detail_id' => $detail->id,
       'user_id' => $user->id,
-      'category_id' => $targetcategory->id,
+      'category_id' => $toupdate->id,
     ]);
     return back()->with('success', 'File uploaded successfully.');
   }

@@ -77,7 +77,7 @@ export default function Update(props, { csrf_token }) {
     <>
       <Head title="Upload | Filebag" />
       <Navbar />
-      <form action="/upload" method="POST" encType="multipart/form-data">
+      <form action={`/${props.id}/update`} method="POST" encType="multipart/form-data">
         <div className="flex flex-col max-lg:pt-32 w-full h-screen bg-white pt-12">
           <main className="flex flex-auto flex-col items-center">
             <div className="flex flex-col gap-4 lg:gap-10 lg:flex-row w-full justify-between items-center h-auto lg:h-full px-32">
@@ -105,7 +105,7 @@ export default function Update(props, { csrf_token }) {
                 <select
                   name="category"
                   className="form-select p-2 border border-solid border-gray-400 rounded-md mb-4 font-medium text-gray-500">
-                  <option value={categories.id} className="text-gray-300" hidden>
+                  <option value="" className="text-gray-300" hidden>
                     Select Category
                   </option>``
                   {categories.map((category) => (
